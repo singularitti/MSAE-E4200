@@ -1,0 +1,79 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8
+%!BIB TS-program = bibtex
+%!TEX spellcheck = en_US
+
+\documentclass[11pt,a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{enumerate}
+\usepackage{braket}
+
+\title{Some comments and figures on Homework 1}		% Title
+\author{}								% Author
+\date{\today}											% Date
+
+\begin{document}
+\maketitle
+\section{Problem 1}
+\begin{enumerate}[(a)]
+	\item See Fig. \ref{fig:pro1a} for reference.
+	      \begin{figure}[h]
+		      \centering
+		      \includegraphics[width=0.7\linewidth]{pro_1_a.pdf}
+		      \caption{Parameters: $k_B = \gamma = 1$.}
+		      \label{fig:pro1a}
+	      \end{figure}
+	\item See Fig. \ref{fig:pro1b} for reference.
+	      \begin{figure}[h]
+		      \centering
+		      \includegraphics[width=0.7\linewidth]{pro_1_b.pdf}
+		      \caption{Parameters: $k_B = \gamma = 1$.}
+		      \label{fig:pro1b}
+	      \end{figure}
+	\item See Fig. \ref{fig:pro1c} for reference.
+	      \begin{figure}[h]
+		      \centering
+		      \includegraphics[width=0.7\linewidth]{pro_1_c.pdf}
+		      \caption{Parameters: $k_B = \gamma = 1$, and $\frac{1}{4\hbar} \big( \frac{m}{\gamma} \big) ^{\frac{1}{2}}= 1$.}
+		      \label{fig:pro1c}
+	      \end{figure}
+\end{enumerate}
+
+\newpage
+\section{Problem 2}
+\begin{enumerate}[(a)]
+	\setcounter{enumi}{2}
+	\item To make it simple, I assume $k_B T = \varepsilon$.
+	      And let the analytic result is
+	      \begin{equation}
+		      \braket{x} = \frac{4\lambda k_B T}{3 \alpha k_B T - 4 \gamma^2} =
+		      \frac{4\lambda \varepsilon}{3 \alpha \varepsilon - 4 \gamma^2},
+	      \end{equation}
+	      and mean-field result is
+	      \begin{equation}
+		      \braket{x}_{\text{mean-field}} =
+		      \frac{1}{3} \frac{4\lambda k_B T}{3 \alpha k_B T - 4 \gamma^2} =
+		      \frac{1}{3} \frac{4\lambda \varepsilon}{3 \alpha \varepsilon - 4 \gamma^2}.
+	      \end{equation}
+
+	      Perform molecular dynamics simulation,
+	      when $\braket{x}$ is very small,
+	      we can see analytic result is closer to the simulation result,
+	      but mean-field has noticeable deviation from simulation;
+	      when $\braket{x}$ is large, mean-filed result is closer.
+	      See Fig. \ref{fig:pro2c2} for reference.
+	      \begin{figure}[h]
+		      \centering
+		      \includegraphics[width=0.7\linewidth]{pro_2_c_2.pdf}
+		      \caption{Simulation result compare to analytic and mean-filed results.}
+		      \label{fig:pro2c2}
+	      \end{figure}
+	      Here the initial $x$ position is from $0$ to $0.5$, with $2^{14}$ time steps.
+\end{enumerate}
+
+
+\end{document}
