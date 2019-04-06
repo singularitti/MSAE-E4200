@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{pagecolor}
+\usepackage[paperwidth=14.23in,paperheight=18.09in]{geometry}
+\definecolor{h}{rgb}{0.8,0.85,0.77}
+\definecolor{bg}{rgb}{0.99,0.97,0.81}
+\definecolor{v}{rgb}{0.91,0.74,0.65}
+
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{tikzpicture}[remember picture, overlay]
+
+	\node at (current page.south west){
+		\begin{tikzpicture}[remember picture, overlay]
+
+			\foreach \y in {1, 2.4,..., 43}
+			\draw[color=h, line width=1pt](0,\y) -- (20in, \y);
+			\draw[color=v, line width=2pt] (2in,0)--(2in,40in);
+
+		\end{tikzpicture}
+	};
+\end{tikzpicture}
+\pagecolor{bg}
+
+\end{document}

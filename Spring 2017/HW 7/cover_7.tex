@@ -1,0 +1,74 @@
+% !TEX program = xelatex
+% !TEX encoding = UTF-8
+% !BIB program = bibtex
+% !TEX spellcheck = en_US
+\documentclass[12pt]{article}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\graphicspath{{images/}}
+\usepackage{fancyhdr}
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newpxtext,newpxmath}
+
+\DeclareTextCommand{\nobreakspace}{T1}{\leavevmode\nobreak\ }
+
+\title{Theory of Crystalline Materials HW \RMN{7}}		% Title
+\author{Qi Zhang (UNI: \texttt{qz2280})}								% Author
+\date{}											% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\lhead{\thetitle}
+\rfoot{\thepage}
+
+
+\newcommand*{\rmn}[1]{\romannumeral#1}
+\newcommand*{\RMN}[1]{\uppercase\expandafter{\romannumeral#1}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+	\vspace*{0.5 cm}
+	\includegraphics[scale = 0.25]{NewEngineeringDkBlue.png}\\[1.0 cm]	% University Logo
+	\textsc{\Large Applied Physics and Applied Mathematics\\
+		\large with Materials Science and Engineering}\\[2.0 cm]	% University Name
+	\textsc{\Large MSAE E4200}\\[0.5 cm]				% Course Code
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries \thetitle}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Submitted To:}\\
+			Chris Marianetti\\
+			Assoc. Professor\\
+			APAM Department\\
+		\end{flushleft}
+	\end{minipage}~
+	\begin{minipage}{0.4\textwidth}
+
+		\begin{flushright} \large
+			\emph{Submitted By :} \\
+			Qi Zhang\\
+			\texttt{qz2280}\\
+			Spring 2017\\
+		\end{flushright}
+
+	\end{minipage}\\[2 cm]
+
+
+\end{titlepage}
+\end{document}
