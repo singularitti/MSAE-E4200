@@ -1,0 +1,639 @@
+%  Guys, this one also came largely from Feynman (following chapters from the HO one)
+%  The atomic polarizability came from Ashcroft and Mermin
+%  There may have been other sources in there too, I don't remember, but let me know if you can't find where a source came from
+%  Also, please feel free to add your own ideas!  I can always delete them if I don't agree or don't want them discussed for some reason.  But
+%    as I try and teach the students, more ideas are better than fewer!
+
+%\documentclass[preprint,tighten,prl]{problemDB}
+\documentclass[]{revtex4}
+%\documentclass[]{book}
+\newcommand{\sm}[1]{\[\]}
+%\newcommand{\st}[1]{#1}
+\newcommand{\st}[1]{{\color{red}\bfseries #1}}
+
+\input{./mydefs}
+
+\begin{document}
+  
+  \title{Physics of Crystalline Materials\\
+    MSAE 4200\\
+    Worksheet: Materials susceptibilities and the Harmonic Oscillator}
+  
+  \maketitle
+  
+  \vskip 24pt
+  {Names and Roles of team members:}
+  
+  \vskip 24 pt
+  Goal: The goals of this spreadsheet are:
+  \begin{itemize}
+    \item Introduce in more detail the concept of material susceptibility
+    \item Understand its relationship to the HO
+  \end{itemize}
+  
+  \cork{}
+  \vskip 12pt
+  
+  
+  
+  %\vskip 12pt
+  Start this worksheet in class in your groups and discuss it.  There will also be some class discussion to get things off to a good start.  This worksheet will be finished individually for the first homework.
+  
+  \section*{What is this worksheet about?}
+  \section*{OK, here we go:}
+  Usual preamble:
+  \begin{enumerate}
+    \item Figure out your group
+    \item Figure out who is team leader
+    \item Introduce yourselves to each other
+    \item Figure out who is scribe for this worksheet
+    \item Discuss and write down the team goal
+    \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.  [simon]
+  \end{enumerate}
+  
+  This is another ``here are the equations, what is the logic" worksheet.
+  
+  \section*{Review of where we are}
+  
+  \cork{cork this in class}
+  We have been talking about a mass on a spring and found for the case of a sinusoidal driving force in the presence of
+  damping, and using some pretty cool math tricks to solve it, we get that
+  
+  \[\hat{x} = R\widehat{F}\]
+  \st{
+    where $\hat{x}$ is the complex representation of displacement of the oscillator and $\hat{F}$ is the complex representation of driven force acting on the oscillator. R is the coefficient that links these two. Rearranging to get R:
+  }
+  \[R = \frac{\widehat{F}}{\hat{x}}\]
+  \st{
+    From the last worksheet, we know that:
+  }
+  \[R = \frac{1}{m(\omega_0^2-\omega^2+i\gamma\omega)}\]
+  
+  \st{Where we understand that forces and displacements must be real, not imaginary.  That was just a pretty cool math trick we used there.}
+  
+  \st{The use of the letter $R$ is not random here.  We applied a force to the mass, and the system (of a mass on a spring) responded by the mass moving.
+    It resulted in a linear response where $x$ was proportional to $F$ and the constant of proportionality was $R$.  So this looks like a linear
+    response function that we have talked about before.  Like $V=IR$ or $\Delta H = C_p\Delta T$ and so on.   It is really a ``linear response constant",
+    but we found that it's value depended on the frequency of the applied force, so $R(\omega)$, is a function of frequency.  When we apply this to materials
+    we generally call this response function a ``susceptibility" and give it the Greek letter chi: $R=\chi(\omega)$.
+    
+    Let's look at how it behaves in more detail.  $\chi(\omega)$ is a complex function, which seems odd since it is a property of a real material, so let's
+    look into it in a bit more detail. 
+    By rationalizing the denominator:}
+  
+  \[\chi(\omega)=\frac{(\omega_0^2-\omega^2-i\gamma\omega)}{m(\omega_0^2-\omega^2+i\gamma\omega)(\omega_0^2-\omega^2-i\gamma\omega)}\]
+  \[=\frac{(\omega_0^2-\omega^2)-i\gamma\omega}{m((\omega_0^2-\omega^2)^2+\gamma^2\omega^2)}\]
+  The denominator is called the characteristic equation, in a complex analysis it determines where the poles are in the complex plane (we will return to this later), but here it just picks out
+  the mode frequencies of our oscillator system.
+  
+  \st{For the case $\omega = 0$ we get}
+  \[\chi(\omega)=\frac{1}{m\omega_0^2} = \frac{1}{k}\]
+  \st{
+    This is to show that when the driven force moves very slowly, the system is just the classic HO case in which the frequency of the oscillator is $\omega_0$.
+    For another case where $\omega \rightarrow \infty:$
+  }
+  \[\lim_{\omega\rightarrow\infty}\chi(\omega)=-\frac{1}{m\omega^2}\]
+  \st{
+    We can see that when the frequency of the driven force is extremely large, the susceptibility of the system is negative and only depends the driven frequency.
+  }
+  
+  \st{The imaginary part of $\chi(\omega)$, $\chi^{\prime\prime}(\omega)$ (say ``chi double-prime"), is }
+  \[\chi^{\prime\prime}(\omega)=\frac{-\gamma\omega}{m((\omega_0^2-\omega^2)^2+\gamma^2\omega^2)}\label{eq:chi''}\]
+  \st{
+  When $\omega \rightarrow 0$, $\chi'' \rightarrow 0$.
+  $\chi''$ approaches zero when $\omega \rightarrow \infty$.
+   It is an odd function if we allow negative frequency, however this is not the convention.
+   Near $\omega_0$, it looks like ``even" but it is actually neither odd nor even.
+  
+  It peaks at $\omega = \omega_0$.
+}
+  
+  \st{
+    We can break it into two terms that consist of a new frequency $\omega_1$ to mimic the peak and the valley of the curve:
+  }
+  \[=\frac{1}{2m\omega_1}\left[\frac{\gamma/2}{(\omega-\omega_1)^2+(\gamma/2)^2}-\frac{\gamma/2}{(\omega+\omega_1)^2+(\gamma/2)^2}\right]\]
+  \st{
+    Also we have the real part of the susceptibility:
+  }
+  \[\chi^{\prime}(\omega)=\frac{(\omega_0^2-\omega^2)}{m((\omega_0^2-\omega^2)^2+\gamma^2\omega^2)}\]
+  [describe the asymptotic properties of $\chi^{\prime}$ ($\omega \rightarrow 0$, $\omega \rightarrow \infty$, even,odd, where it peaks, where it goes through zero, etc..  What does it all mean?]
+  
+  \st{
+    When $\omega \rightarrow 0$, $\chi'$ approaches $\frac{ 1 }{ k }$.
+    $\chi^{\prime}$ approaches zero when $\omega \rightarrow \infty$.
+    It is an even function if we allow negative frequency, however this is not the convention.
+    Near $\omega_0$, it looks like ``odd" but it is actually neither odd nor even.
+    
+    It peaks at $\omega = \sqrt{\omega_0^2 \pm \gamma \omega_0}$ and it goes through zero at $\omega = \omega_0$.
+  }
+  
+  \begin{figure}[H]\begin{center}
+      \includegraphics[width=0.6\textwidth]{./real.png}
+      \caption{real-part of the susceptibility for a damped harmonic oscillator}
+  \end{center}\end{figure}
+  \begin{figure}[H]\begin{center}
+      \includegraphics[width=0.6\textwidth]{./imag.png}
+      \caption{imaginary part of the susceptibility for a damped harmonic oscillator}
+  \end{center}\end{figure}
+  
+  \cork{The kinetic energy of our HO is proportional to the square of the velocity.  If the velocity is some general oscillating function that we represent
+    in the general form  as $\widehat{A}=A_0 e^{i\omega t+\phi}$
+    the kinetic energy is proportional to
+    \be
+    \item $\widehat{A}^2$
+    \item $\widehat{A}\widehat{A}^*$
+    \item $\Re(\widehat{A}^2)$
+    \item $\Re(\widehat{A}\widehat{A}^*)$
+    \item None of the above
+    \ee
+  }
+  
+  \st{We have used the complex formulation to solve the differential equation more easily, where we understand that it is only the real-part that contains
+    physical information. We know that the amplitude of oscillation is important for determining the energy.  To get the amplitude of a complex number, $A$ say, we multiply it by its complex conjugate then square-root.  Does this give the amplitude of real oscillation?  Let's look into it in more detail.}
+  \[A=A_0 e^{i(\omega t+\phi)}\]
+  \st{
+    $A$ is our response variable, $A_0$ is the amplitude, t is the time,  and $\phi$ is  the  phase  shift.
+  }
+  \[=\widehat{A}e^{i\omega t}\]
+  \st{
+    where we use complex number $\hat{A}$ to represent $A_0 e^{i\phi}$. Hence the real part of $A$:
+  }
+  \[\Re{\{A\}}=\Re{\{A_0 e^{i(\omega t+\phi)}\}}\]
+  \[\Re{\{A\}}=A_0 \cos{(\omega t+\phi)}\]
+  
+  \st{Getting back to the physics again,  we want a real displacement so we take}
+  
+  \[\Re{\{\hat{x}\}}=\Re{\{R\widehat{F}\}}\]
+  
+  \st{writing $F$ as a general complex number, $F_0e^{i(\omega t + \phi)}$ and in general that $R$ may also be complex (actually it {\it is} complex),
+    $R = R_0 e^{i\theta} = \rho e^{i\theta}$, we get}
+  
+  \[\Re{\{\hat{x}\}}=\Re{\{\rho e^{i\theta}F_0e^{i(\omega t + \phi)}\}}\]
+  \[\Re{\{\hat{x}\}}=\rho F_0\cos(\omega t + \phi+\theta)\]
+  
+  the mass oscillates sinusoidally [blah blah]
+  
+  
+  Is this some special case or can we reuse any of this to help understand the response of a real material to something?  Let's take a look.
+  Remember that the energy stored in the system has something to do with
+  \[\rho^2= \frac{1}{m^2[(\omega_0^2-\omega^2)^2+\gamma^2\omega^2]}\]
+  and of course the phase lag is
+  \[\theta=\arctan\left(-\frac{\gamma\omega}{(\omega_0^2-\omega^2)}\right)\].
+  We explored these in the lightly damped case where $\gamma \ll \omega_0$ and got plots like these:
+  \begin{figure}[H]\begin{center}
+      %\includegraphics[width=0.6\textwidth]{../lectures/figures/resonance.png}
+      \caption{amplitude squared of the response function}
+  \end{center}\end{figure}
+  \begin{figure}[H]\begin{center}
+      %\includegraphics[width=0.6\textwidth]{../lectures/figures/phaseLag.png}
+      \caption{phase lag of the response function vs. frequency}
+  \end{center}\end{figure}
+  
+  Now we do an experiment where we shine light (electromagnetic radiation) of frequency $\omega$ on a material (in this case Ge) and see what happens:
+  \begin{figure}[H]\begin{center}
+      %\includegraphics[width=0.8\textwidth]{../lectures/figures/getransmissionwide.png}
+      %\includegraphics[width=0.8\textwidth]{../lectures/figures/getransmissionnarrow.png}
+      \caption{absorption spectrum of light on Ge}
+  \end{center}\end{figure}
+  [describe what you see.  Explain what is on each axis. Draw some conclusion from it in a very general sense, not by looking up anything about germanium but
+  describing features and reasoning what they mean physically.  What is being plotted?  What can you infer from it?]
+  
+  \st{
+    Electric field provided by electromagnetic wave or light can be regarded as driven force, and a system with  phonon oscillation can be regarded as harmonic oscillator. In the figure, $x-axis$ represents the wavenumber k of light. $y -axis$ represents the transmission of the light.
+    
+    The valley of transmission occurs at $350 cm^{-1}$, corresponding to wavelength around 28.5 microns, which means that the maximum of absorption of germanium happens at this frequency. The imaginary part of susceptibility actually means the absorption of a material. The maximum absorption happens at the natural frequency $\omega_0$.
+  }
+  
+  \begin{figure}[H]\begin{center}
+      %\includegraphics[width=0.8\textwidth]{../lectures/figures/IRtransmittanceAtmosphere.jpg}
+      \caption{absorption spectrum of light on Earth's atmosphere}
+  \end{center}\end{figure}
+  [say something interesting about this case]
+  
+  \st{
+    The interesting thing of this case is that for same kind of molecule, the absorption happens at multi-wavelengths, indicating that multi-vibrational modes exist. Also, instead of a single frequency, the maximum absorption has a band-width.
+  }
+  
+  %\sjb{model polarization vs electric field for a dielectric. }
+  
+  So there are at least cases where an actual material response to a sinusoidal driving field looks like our DHO result.  Let's explore this a bit more.
+  
+  \st{ Light is a sinusoidally varying electric field (electromagnetic, but we can ignore the magnetic part in most cases as it is smaller by $c^2$),
+    so}
+  \[\vec{E} = \vec{E_0}e^{-i\omega t}\]
+  \st{
+    The force provided by the $E$ field on charge $q$ is:
+  }
+  \[\vec{F}_q = q\vec{E}\]
+  
+  Let's consider an atom as an electron cloud (with a center of mass) around a localized nucleus.  In the presence of a (local) $\vec{E}$ field, the electrons
+  will be pushed one way and the nucleus the other way, creating an electric dipole.  There will, of course be a restoring force that wants to recombine the
+  center of mass of the electon cloud with the position of the nucleus.  Clever physicists like to use the simplest models that they can get away with.
+  Let's try making that restoring force to be linear, like a spring, as shown in the Figure.
+  \begin{figure}[H]\begin{center}
+      %\includegraphics[width=0.4\textwidth]{../lectures/figures/dipolarAtom.png}
+      \caption{model for electronic polarizability}
+  \end{center}\end{figure}
+  This is called a ``shell model" where the electrons are considered like a shell around the nucleus that is somehow rigid and can wiggle back and forth.  The
+  total charge in the shell is $Z_ie$ and the mass of the shell is $Z_im$ where $Z_i$, somewhat obviously, is the number of electrons and $m$ and $e$ are the mass
+  and the charge of the electron.  We assume that the mass of the nucleus is infinite.
+  
+  \st{The induced dipole moment, $\vec{p}$, is defined as}
+  
+  \[\vec{p}=-Z_ie\vec{r}\]
+  
+  now, we want a response function that describes the atomic polarizability.
+  \[\vec{p_0} = \alpha^{at}(\omega)\vec{E_0}\]
+  \st{
+    where the factor that links $\vec{p_0}$ and $\vec{E_0}$ is a function of $\omega$.
+  }
+  \st{
+    
+    On the other hand, susceptibility $\chi$ is the factor that links time-dependent dipole moment $\vec{p}$ and electric field $\vec{E}$:
+  }
+  \[\vec{p} = \chi\vec{E}\]
+  [say something about damping in this model]
+  
+  \st{
+    Below the plasma frequency, the oscillation frequency of the $EM$ wave is slow enough for the electron to follow. In steady state, they always oscillate in phase. There is no energy lost under such situation, corresponding to the no-damping harmonic oscillator case. In the last worksheet, we already derived the relationship between the amplitude of the oscillation displacement and the applied force, which can be expressed as $C = \frac{F_0}{m(\omega^2 - \omega^2_0)}$. Similarly, here we have:
+  }
+  \[\alpha^{at}=\frac{Z_ie^2}{m(\omega_0^2-\omega^2)}\]
+  
+  [Say something as quantitative as possible about how you could measure this]
+  The Claussius-Mossotti equation we are not going to derive right now, but it relates a macroscopically measurable property, dielectric constant, $\epsilon$, with
+  a microscopic quantity, polarizability density $\alpha/v$
+  \[\frac{\epsilon-1}{\epsilon + 2}=\frac{4\pi\alpha}{3v}\]
+  
+  \st{
+    The following derivation is based on SI units:
+    \begin{equation*}
+      \int \vec{E} \cdot d \vec{a} = E \cdot 4 \pi r^2 = \frac{1}{\epsilon_0} Q_{enc} = \frac{1}{\epsilon_0} \frac{4}{3} \pi r^3 \rho
+    \end{equation*}
+    So
+    \begin{equation*}
+      \vec{E_{\rho}} = \frac{1}{3 \epsilon_0} \rho r \hat{r} = - \frac{q r}{4 \pi \epsilon_0} \frac{\hat{r}}{R^3} = - \frac{\vec{p}}{4 \pi \epsilon_0 R^3}
+    \end{equation*}
+    The density of atoms $N = \frac{1}{(4/3)\pi R^3}$. The macroscopic field $\vec{E}$ is $\vec{E}_{self} + \vec{E}_{else}$, where $\vec{E}_{self}$ is the average field over the sphere due to the atom itself.
+    \begin{equation*}
+      \vec{p} = \alpha \vec{E}_{else} \Rightarrow \vec{P} = N \alpha \vec{E}_{else}
+    \end{equation*}
+    \begin{equation*}
+      \vec{E}_{self} = - \frac{\vec{p}}{4 \pi \epsilon_0 R^3}
+    \end{equation*}
+    so
+    \begin{equation*}
+      \vec{E} = - \frac{\alpha}{4 \pi \epsilon_0 R^3} \vec{E}_{self} + \vec{E}_{else} = (1-\frac{\alpha}{4 \pi \epsilon_0 R^3}) \vec{E}_{else} = (1-\frac{N \alpha}{3 \epsilon_0}) \vec{E}_{else}
+    \end{equation*}
+    So,
+    \begin{equation*}
+      \vec{P} = \frac{N \alpha}{1 - N \alpha/3 \epsilon_0} \vec{E} = \epsilon_0 \chi_e \vec{E}
+    \end{equation*}
+    On the other hand, we know that $\chi_e = \epsilon_r - 1$, so
+    \begin{equation*}
+      \frac{\epsilon_r - 1}{\epsilon_r + 2} = \frac{N \alpha}{3 \epsilon_0}
+    \end{equation*}
+    This is the Claussius-Mossotti equation.
+  }
+
+%\sjb{more here}
+
+\section*{Quantitative evaluation of energy}
+\st{Motivated by this, let's take a slightly more quantitative look at the energies in the oscillator rather than saying the energy ``goes like" $\rho^2$.
+
+First let's look at a complex number in general.}
+
+\st{
+If we assume 
+\begin{equation*}
+  \tilde{A} = A_0 \exp(i (\omega t + \phi)),
+\end{equation*}
+then the real part of $\tilde{A}$ is $A = A_0 \cos (\omega t + \phi)$. And take its square,
+}
+\[\Re{\{\tilde{A}\}}^2=A_0^2\cos^2(\omega t + \phi).\label{eq:reala}\]
+\st{
+We then take time-averaged value of it, i.e., integrate \eqref{eq:reala} within one
+period, and divide by $2\pi$. We find
+}
+
+\[\langle \Re{\{\tilde{A}\}}^2 \rangle=\frac{1}{2}A_0^2.\]
+
+\st{
+The square of amplitude of $\tilde{A}$, as discussed last time, is
+}
+\[\cancel{A^2} = |\tilde{A}^2| = \tilde{A}\tilde{A}^\ast = A_0^2.\]
+\qz{
+The first term is confusing so I will cross it out. If we want to use the square of $A$, it is not right to square the complex number and then take the real part, because the real part of the square of a complex number is not just the square of the real part, but also involves the imaginary part. So when we wish to find the energy we have to get away from the complex notation for a while to see what the inner workings are.
+}
+
+\st{In general then,}
+\[\langle \Re{\{\tilde{A}\}}^2 \rangle = \cancel{\frac{1}{2} A^2} = \frac{1}{2} A_0^2.\]
+This is a particular form of Parseval's theorem and is extremely useful in physics of materials.
+
+\st{Now return to our damped, forced HO.}
+
+\st{
+Based on Newton's second law,
+}
+\[ F(t) = m \frac{d^2x}{dt^2}+c\frac{d2x}{dt}+ kx\label{eq:dkx},\]
+
+\st{
+For a infinitesimal amount of displacement, the work done by the force is
+}
+\[dW = F dx.\]
+\st{
+  Note, here $F$ is the real part of $\tilde{F}$, and $x$ is the real part of $\tilde{x}$
+  also.
+}
+
+\st{
+The instantaneous power is
+}
+\[P=\frac{dW}{dt} = F \frac{dx}{dt} = m\left[\left(\frac{dx}{dt}\right)\left(\frac{d^2x}{dt^2}\right)+\omega_0^2x\left(\frac{dx}{dt}\right)\right]+\gamma m\left(\frac{dx}{dt}\right)^2.\]
+\st{
+Still note that here $\frac{ dx }{ dt } = \frac{ d }{ dt } \Re{\{\tilde{x}\}}$.
+}
+
+\st{
+We found that the first term can be rewritten by time-derivative of a new term, i.e.,
+}
+\[= \frac{d \left[\frac{1}{2}m\left(\frac{dx}{dt}\right)^2+\frac{1}{2}m\omega_0^2x^2\right]}{dt}+\gamma m\left(\frac{dx}{dt}\right)^2\]
+[say something intelligent about the terms in the square brackets in the equation above.]
+
+\st{
+The terms in brackets are pure derivatives of two terms that are easy to understand—one is the kinetic energy of motion, and the other is the potential energy of the spring. Let us call this quantity the stored energy, that is, the energy stored in the oscillation. Suppose that we want the average power over many cycles when the oscillator is being forced and has been running for a long time. In the long run,
+or in steady state, the stored energy does not change—its derivative gives zero average effect. This is because the work done by
+force is counteracted by that of friction force. If you don't buy it, let's calculate:
+The real motion $x$ is proportional to $\cos (\omega t + \phi)$,
+the velocity $v$ is thus proportional to $- \omega \sin(\omega t + \phi)$.
+Thus the total energy is proportional to
+\begin{equation*}
+ \frac{ 1 }{ 2 } k x^2 + \frac{ 1 }{ 2 } m v^2 
+ \propto \frac{ 1 }{ 2 } m \omega_0^2 \cos^2 (\omega t + \phi)
+ + \frac{ 1 }{ 2 } m \omega^2 \sin^2 (\omega t + \phi),
+\end{equation*}
+but 
+\begin{align*}
+  \langle \frac{ d }{ dt } \cos^2 (\omega t + \phi) \rangle
+  &= \langle -2 \omega \sin(\omega t + \phi) \cos (\omega t + \phi) \rangle = 0, \\
+   \langle \frac{ d }{ dt } \sin^2 (\omega t + \phi) \rangle
+  &= \langle 2 \omega \sin(\omega t + \phi) \cos (\omega t + \phi) \rangle = 0.
+\end{align*}
+Thus, if we average the power in the long run, all the energy ultimately ends up in the resistive term $\gamma m\left(\frac{dx}{dt}\right)^2$.
+There is some energy stored in the oscillation, but that does not change with time, if we average over many cycles. Therefore the mean power
+}
+\[\langle P\rangle=\left\langle \gamma m\left(\frac{dx}{dt}\right)^2\right\rangle
+= \bigg\langle \gamma m \Re{\bigg\{ \frac{ d }{ dt } \tilde{x} \bigg\}}^2 \bigg\rangle. 
+\label{eq:aveP}\]
+
+\st{
+Recall
+}
+\[\tilde{x}=\hat{x}e^{i\omega t}\]
+\st{
+Take first-order time derivative:
+}
+\[\frac{d\tilde{x}}{dt}=i\omega \hat{x}e^{i\omega t}\]
+
+\st{
+Substitute its real part into \eqref{eq:aveP},
+}
+\[\langle P\rangle=\frac{1}{2}\gamma m\omega^2 x_0^2\]
+\[=\frac{1}{2}\gamma m\omega^2\rho^2F_0^2\]
+\st{
+Since
+\begin{equation*}
+  x_0 = \rho F_0.
+\end{equation*}
+And,
+}
+
+\[\langle P\rangle= -\frac{1}{2}F_0^2\omega\chi^{\prime\prime}(\omega)\]
+
+\st{
+  Another interesting feature to discuss is how much energy is stored. That is not the same as the power, because although power was at first used to store up some energy, after that the system keeps on absorbing power, insofar as there are any heating (resistive) losses. At any moment there is a certain amount of stored energy, so we would like to calculate the mean stored energy $\langle E \rangle$ also.
+  Since
+  \begin{equation*}
+    \bigg\langle \frac{ 1 }{ 2 } m v^2 \bigg\rangle = 
+    \bigg\langle \frac{ 1 }{ 2 } m \omega^2 \sin^2 (\omega t + \phi) \bigg\rangle = 
+    \frac{ 1 }{ 4 } m \omega^2 x_0^2,
+  \end{equation*}
+  and 
+  \begin{equation*}
+  \bigg\langle \frac{ 1 }{ 2 } k x^2 \bigg\rangle = 
+  \bigg\langle \frac{ 1 }{ 2 } m \omega_0^2 \cos^2 (\omega t + \phi) \bigg\rangle =
+  \frac{ 1 }{ 4 } m \omega_0^2.
+  \end{equation*}
+Thus
+}
+\[\langle E\rangle = \frac{1}{2}m\left\langle\frac{dx}{dt}\right\rangle^2+\frac{1}{2}m\omega_0^2\langle x^2\rangle\]
+\[=\frac{1}{4}mx_0^2(\omega^2+\omega_0^2).\]
+
+\st{
+$Q$ is not a very useful number unless it is very large.
+When an oscillator is very efficient, and if $\omega$ is near $\omega_0$, so that 
+$| \hat{x} |$ is large, the stored energy is very high—we can get a large stored energy from a relatively small force. The force does a great deal of work in getting the oscillation going, but then to keep it steady, all it has to do is to fight the friction. The oscillator can have a great deal of energy if the friction is very low, and even though it is oscillating strongly, not much energy is being lost. The efficiency of an oscillator can be measured by how much energy is stored, compared with how much work the force does per oscillation.
+}
+
+\st{
+How does the stored energy compare with the amount of work that is done in one cycle? This is called the quality factor $Q$ of the system, and $Q$ is defined as $2\pi$ times the mean stored energy, divided by the work done per cycle.
+}
+\[Q = 2\pi\frac{\frac{1}{4}mx_0^2(\omega^2+\omega_0^2)}{\frac{1}{2}\gamma m\omega^2x_0^2\cdot 2\pi/\omega}=\frac{(\omega^2+\omega_0^2)}{2\gamma \omega}\]
+\st{
+When $Q$ is relatively large, it gives a measure of how good the oscillator is.
+If $\omega = \omega_0$, then 
+\begin{equation*}
+    Q = \frac{ \omega_0 }{ \gamma }.
+\end{equation*}
+}
+
+%Something for free:
+
+%\begin{tabular}{|l|l|l|}
+%\hline
+%General Characterstic& Mechanical Property & Electrical Property\\
+%\hline\hline
+%ind. variable&time ($t$)& time ($t$)\\
+%dep. variable& displacement ($x$) & charge ($q$)\\
+%inertia & mass (m) & inductance ($L$)\\
+%resistance (loss) & drag coefficient ($\gamma m$) & resistance ($R=\gamma L$)\\
+%stiffness & stiffness ($k$) & (capacitance)$^{-1}$ ($1/C$)\\
+%resonant frequency & $\omega_0^2 = k/m$ & $\omega_0^2 = 1/LC$\\
+%period & $t_0 = 2\pi\sqrt{m/k}$& $t_0 = 2\pi\sqrt{LC}$\\
+%figure of merit & $Q=\omega_0/\gamma$ & $Q=\omega_0 L/R$\\
+%\hline
+%\end{tabular}
+
+\section*{DHO with no driving force}
+
+\st{Turn off the driving force at some point.  What happens?
+Let's do a handy wavy analysis based on good physics reasoning to
+get some {\it approximate} idea of what will happen, working under the assumption that
+the damping is very small compared to the averate frequency of the oscillator (highly under-damped case)}
+[use physical arguments to justify these approximate equations.  This is a good physicists trick...find the approximate answer first, then dive in more deeply.]
+
+\st{
+Well, consider what is $\frac{ \omega }{ Q }$. First $Q$ contains $2\pi$, thus
+$\frac{ \omega }{ Q } \propto \frac{ 1 }{ T }$. 
+The rest part of $Q$ contains the mean ``stored" energy divided by work done 
+---note that this is equal to the energy dissipated by friction force per cycle. Thus its
+inverse is proportional to energy lost per cycle divided by energy stored. If we times
+this ratio by $E$---the instantaneous energy, then we get energy lost per cycle.
+\footnote{This is the same logic as ``one-decay process" of a nuclide, see
+\url{http://www.wikiwand.com/en/Radioactive_decay}.
+}
+Combine
+$\frac{ \omega }{ 2\pi }$ and $\frac{ E }{ (Q/2\pi) }$ together, we get energy lost
+per unit amount of time when the instantaneous energy is $E$.
+That is,
+}
+\[\frac{dE}{dt}\sim\frac{-\omega E}{Q}\]
+\st{
+This is rough because it is true only for large $Q$. But what is the frequency? 
+Let us suppose that the system moves so nicely, with hardly any force, that if we let go
+it will oscillate at essentially the same frequency all by itself. So we will guess that 
+$\omega$ is the resonant frequency $\omega_0$. Thus we can conclude, by simple
+integration,
+}
+
+\[E=E_0e^{-\omega_0 t/Q}=E_0e^{-\gamma t}\]
+\st{
+This would be the measure of the energy at any moment. What would the formula be, roughly, for the amplitude of the oscillation as a function of the time? The same? No! The amount of energy in a spring, say, goes as the square of the displacement; the kinetic energy goes as the square of the velocity; so the total energy goes as the square of the displacement. Thus the displacement, the amplitude of oscillation, will decrease half as fast because of the square. In other words, we guess that the solution for the damped transient motion will be an oscillation of frequency close to the resonance frequency $\omega_0$,
+in which the amplitude of the sine-wave motion will diminish as $e^{- \gamma t/2}$.
+}
+
+\[x=x_0e^{-\gamma t/2}\cos(\omega_0 t)\label{eq:xguess}\]
+\st{OK, so we have some idea what the result should look like. It will be an oscillation where the amplitude decays
+exponentially with time, at least for small times, and the rate of decay depends on $\gamma$ the friction force.
+Now let's solve the equation of motion precisely. First we still assume
+}
+
+\[x = Ae^{i\alpha t}\label{eq:eqmo}\]
+\st{
+since this is the most straightforward according to our experience.
+}
+
+\st{
+Substitute \eqref{eq:eqmo} in to \eqref{eq:dkx} we find (with $F(t)=0$)
+}
+\[(-\alpha^2+i\gamma \alpha +\omega^2)Ae^{i\alpha t}=0.\]
+
+\st{
+It is impossible if
+}
+\[A=0.\]
+\st{
+So there must be
+}
+
+\[-\alpha^2+i\gamma \alpha +\omega^2=0\]
+
+\st{
+  Solve this equation we find
+}
+\[\alpha = i\gamma/2 \pm \sqrt{\omega_0^2-\gamma^2/4}\]
+\st{
+In other words,
+}
+\[\alpha_1 = i\gamma/2+\sqrt{\omega_0^2-\gamma^2/4}=i\gamma/2+\omega_\gamma\]
+\st{
+if we denote $\omega_\gamma = \sqrt{\omega_0^2-\gamma^2/4}$. 
+Here we assume $\gamma$ is small compared to $\omega_0$ so $\omega_\gamma > 0$.
+And a distinct solution is
+}
+
+\[\alpha_2 = i\gamma/2-\omega_\gamma\]
+
+\st{
+Now assume the first solution is
+}
+\[x_1 = Ae^{i\alpha_1 t}\]
+\[x_1 = Ae^{-\gamma t/2}e^{i\omega_\gamma t},\]
+\st{
+and the second solution is
+}
+\[x_2 = Be^{-\gamma t/2}e^{-i\omega_\gamma t}\]
+\st{
+Well, if you look back \eqref{eq:xguess}, you will find $\omega_0$ should be replaced
+by $\omega_\gamma$, but \eqref{eq:xguess} is already a good guess!
+}
+
+\st{
+Thus the general solution for a DHO without driving force is
+}
+\[x = e^{-\gamma t/2}\left(Ae^{i\omega_\gamma t}+Be^{-i\omega_\gamma t}\right).\]
+\st{
+This superposition of solutions is possible because \eqref{eq:dkx} is a linear differential equation.
+}
+
+\st{
+If we randomly choose $B$, the solution $x(t)$ will be a complex number, this is not
+physical---the motion should be real. This can be achieved if the second solution is
+the complex conjugate of the first one. Which means,
+}
+\[x = e^{-\gamma t/2}\left(Ae^{i\omega_\gamma t}+A^*e^{-i\omega_\gamma t}\right)\]
+[the easiest case to consider here is when damping is weak.  Describe what happens in that case.]
+\st{
+This is called \emph{underdamping}. As you can see, the final solution is cosinusoidal,
+enclosed in a exponential decaying envelope. We can imagine after turning off the driving force, 
+the amplitude of motion is smaller and smaller(exponentially), but it still keeps
+oscillating with a certain frequency, forever(though after some time it is indistinguishable from still.)
+}
+
+\st{
+If
+}
+\[\gamma/2 > \omega_0\]
+\st{
+we say it to be \emph{overdamping}. The solution is, by the same way,
+}
+\[x(t) = Ae^{-\left(\gamma/2-\sqrt{\gamma^2/4-\omega_0^2}\right)t}+B e^{-\left(\gamma/2+\sqrt{\gamma^2/4-\omega_0^2}\right)t}.\]
+\st{
+Note that the terms in parenthesis are always positive. Why? Because if it were negative, we would find $\exp$ raised to a positive factor times $t$, 
+which would mean it was exploding! In putting more and more friction into the system, we know it is not going to explode---quite the contrary.
+The first term is dominant because the second term decays faster.
+}
+
+\[\tau_\gamma = \frac{ 1 }{ \gamma/2-\sqrt{\gamma^2/4-\omega_0^2} }\]
+\st{
+The equation above can be viewed as a constant that determines how long will it take
+for the first term to decay to $\frac{ 1 }{ e }$ of its initial amplitude. It is usually called
+\emph{time constant} in differential circuit. See Fig. \ref{fig:tau} for reference.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{tau.pdf}
+  \caption{time constant $\tau_\gamma$ vs. $\gamma$}
+  \label{fig:tau}
+\end{figure}
+}
+
+[investigate what happens to the decay time for an undriven oscillator as a function of increasing drag constant, $\gamma$, from the underdamped to the overdamped regime.
+If we want to damp an oscillator optimally, so that it stops moving in the shortest time, what value of $\gamma$ should we choose?]
+
+\st{
+When $\gamma / 2 < \omega_0$, the higher the $\gamma$, the faster the decaying
+rate, but the slower the oscillating frequency; when $\gamma / 2 > \omega_0$,
+there is no general conclusion because it is not a HO now and depends on $A$ and $B$.
+}
+
+\st{
+If we want to make it decay the fastest, we can take $\gamma / 2 = \omega_0$,
+it is called \emph{critical damping}.
+\begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{underdamping}
+  \caption{$\gamma/2 < \omega_0$, underdamping}\label{fig:underdamping}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{cdamping}
+  \caption{$\gamma/2 = \omega_0$, critical damping}\label{fig:critical damping}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{overdamping}
+  \caption{$\gamma/2 > \omega_0$, overdamping}\label{fig:overdamping}
+  \endminipage
+\end{figure}
+}
+
+
+
+\end{document}

@@ -1,0 +1,616 @@
+%  Here are some general comments
+%  1) I wrap all solutions in \st{}.  This allows me to turn them on or off by simply changing the definition of \st() in the header.
+%  2) Most of the worksheet this time was taken from the chapters on harmonic oscillator in Feynman's introduction to physics to book.
+%     So the basic workflow would be for you to go through the definition in there and capture the points that Feynman makes as bullets
+%  3) If you can go through and do that and then get the result back to me, I can clean up English.
+%  4) I like to use a kind of conversational tone, a bit like Feynman actually, so see if you can capture that a bit.
+%  5) I will put an example below that you can search for.  I will put %%%%EXAMPLE%%%% before to make it more discoverable
+%  6) There are two of you, Qi and Zhen, so maybe split up the tasks a bit (just like the groups do)
+%  7) I would also like you to work on the second worksheet that they have now, that discusses energy in HOs.  I will send that soon.
+%  8) This version of the spreadsheet has most of the typo's that I found corrected.  If you find more, please correct them, but also please tag them so I can make sure they are corrected in all versions of the sheet.
+
+\documentclass[]{revtex4}
+%\documentclass[]{book}
+\newcommand{\sm}[1]{\[\]}
+\newcommand{\st}[1]{{\color{red}\bfseries #1}}
+%\newcommand{\st}[1]{}
+
+\input{./mydefs}
+
+\begin{document}
+
+\title{Physics of Crystalline Materials\\
+MSAE 4200\\
+Worksheet: Harmonic Oscillator, Math review}
+
+\maketitle
+
+\vskip 24pt
+{Names and Roles of team members:}
+
+\vskip 24 pt
+Goal: The goals of this spreadsheet are:
+\begin{itemize}
+\item To bring everyone to the same level of understanding of the physics and the mathematics of the harmonic oscillator.  This should be review for most of you.  However, I want you to understand the simple math deeply.
+\item To continue the process of defining expectations for performance in the class.
+\end{itemize}
+
+\cork{}
+\vskip 12pt
+
+
+
+\section*{Review of where we are}
+\be
+\item Modern technological devices are complex and have many functions
+\item The components and sub-components of those devices have to have specific and well-defined properties to operate well.
+\item These properties are provided by materials.  A major goal of materials science is to make materials with optimized properties.
+\item We can measure material properties. It is usually done by apply an external ``force" to the material and then measuring some response.
+\item Properties are often expressed as susceptibilities which are relevant for linear responses
+\ee
+
+
+%\vskip 12pt
+
+\section*{Review of where we are}
+Start this worksheet in class in your groups and discuss it.  There will also be some class discussion to get things off to a good start.  This worksheet will be finished individually for the first homework.
+
+
+\section*{What is this worksheet about?}
+Let's treat the simplest linear system that we know, a simple mechanical system of a single mass on a linear spring.  This is largely review for people, you should all know a lot about simple harmonic oscillators, but this means that it is a great opportunity to (a) gain a deeper understanding of this system because the math and the concepts are familiar and (b) Develop deeper intuition about simple linear systems because the math is not too complex (c) get more familiar about the class expectations with regards to mathematics, derivations and communication.
+
+IMPORTANT: This is the first ``derivation" worksheet we have done.  In physics we model physical systems using mathematics as we will here.  Any physics (as opposed to purely mathematical) derivation thus consists of two parts: (a) the physics logic (b) the math logic.  These are often muddled together in books.  When reading physics books it is always helpful for you disentangle what is the physics logic and what is the math.  In my years of teaching, I often find that people can be quite adept at cranking away at mathematical derivations, but not at explaining their logic and how it relates to the physics.  In these worksheets I will often tend either to give you the math and you have to fill in the physics logic (by writing words and defining everything in the math expression correctly) or vice versa, to give you the physics logic and have you write down the math. In this worksheet, the math should be straightforward, so I will give you the math and I want you to figure out what physics story is being told, then to write that down.  Remember, be concise and precise but also complete.  Define every little symbol in the equations and know what it applies to.  Pay special attention to things like integration limits and subscripts.
+
+
+\section*{OK, here we go:}
+Usual preamble:
+\begin{enumerate}
+  \item Figure out your group
+  \item Figure out who is team leader
+  \item Introduce yourselves to each other
+  \item Figure out who is scribe for this class (this person writes everything)
+  \item Discuss and write down the team goal
+  \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.  [simon]
+\end{enumerate}
+
+Now, your job is to write the logic that explains the equations you see.  Make it like a story that can be read like a novel.  Be concise, but PRECISE.
+
+I will start some logic here for you so you get the idea.
+
+We will consider a mass, $m$ on a spring hanging vertically.  Initially we let the system come to rest in equilibrium and we mark the height of the mass, setting this height to be zero.  The spring is a linear spring so that the force is proportional to the displacement of the mass from the equilibrium position, 
+
+\[F_s = - kx,\]
+
+%%%%EXAMPLE%%%%
+% This is not part of the solution as I didn't wrap it in \st, so this appeared in the actual worksheet.  But it shows the kind of 
+% writing style that I am after.  Don't worry too much abouyt the style, I will fix it, but the closer you get it the better
+where $-k$, is the constant of proportionality and $x$ measures the vertical displacement from zero.  $k$ is called the spring constant and is a measure of the stiffness of the spring and is a positive, constant, number.  If we think of the spring as a material, this is like a material property, but the spring is not a material, it is a spring, so this is a spring-property. But the force is linear in the displacement, so this is just like materials properties we have discussed.  The minus sign indicates that when the mass displaces up (positive direction) the force is down, and vice versa.  The spring always provides a restoring force.
+
+[I will put instructions that are not part of the narrative in square brackets][write something here that explains the next equation, and so on!]\\ 
+
+%%%%Example%%%%
+\st{
+\noindent {\it Basics:}
+\bi
+\item Let's apply Newton's second law, $\sum \vec{F} = m\vec{a}$ to this situation.  
+\item Plugging $F_s$ into this equation and expressing the acceleration as the second differential of displacement with time we get (the following equation)...
+\ei
+{\it Advanced:}
+\bi
+\item This is a 1D situation so $\vec{a}$ can be expressed as a scalar with a sign, positive for up, negative for down and of course $m$ is the mass of the weight.
+\item Also, by design, the force is acting in the direction of the displacement as it is a 1D problem
+\ei
+}
+
+\[-kx = m \frac{d^2x}{dt^2}\label{eq:kx}\]
+
+\[x = A \cos (\omega_0 t) \label{eq:-x}\]
+
+This is a mathematical solution of \eqref{eq:kx}.  
+%We can explore the physical situation of the spring to find what $A$ and $B$ are...
+\st{
+From middle-school math, we know $\omega_0 = \sqrt{\frac{ k }{ m }}$,
+usually called \emph{natural frequency}.
+You can think this
+formula is a HO with an initial displacement without initial velocity. 
+By the way, this is not the most general solution. 
+Since we can start with $x = 0$ and give it a kick, so the HO has non-zero velocity.
+We will talk about it later.
+}
+
+\st{
+From middle-school math, we know that $\cos$ is a function of periodicity $2\pi$.
+And the solution \eqref{eq:-x} follows this form. In order to change $\omega_0 t$ by $2\pi$, we need time to evolute $\frac{ 2\pi }{ \omega_0 }$, this is called the period of one complete oscillation.
+}
+
+\[T = 2\pi\sqrt{m/k}.\]
+
+{\bfseries some extra questions:} How is the motion affected by the mass of the block? By the stiffness of the spring? By the amplitude of the initial displacement? What does the spectrum of this system look like?  What are the allowed energies of this system?
+
+\st{
+If $m$ increases, natural frequency $\omega_0$ decreases. The periodicity increases,
+means the HO needs longer time back to its equilibrium position, and \textit{vice versa}.
+If the spring becomes stiffer, i.e., $k$ is larger, 
+thus larger restoring force, then
+$\omega_0$ increases,
+$T$ decreases, thus the spring needs less time to recover, or, it oscillates faster, and
+\textit{vice versa}.
+$A$, the amplitude of initial displacement will not affect the periodicity,
+though it does affect the displacement and velocity at time $t$.
+Unlike quantum harmonic oscillators, which have discrete energy levels, classical HOs
+have continuous energy levels. The lowest possible energy is $0$, again different from
+QHO, which needs lowest energy to be $\frac{ 1 }{ 2 } \hbar \omega$(zero-point energy). There is no restriction on highest possible energy.
+}
+
+\st{
+If we do not observe the motion at $0$ but some other time $t_0$, then the motion
+from $t_0$ can be expressed as 
+}
+\[x = A\cos(\omega_0 (t-t_0)),\]
+\st{
+Inside $\cos$, we call it \emph{phase},
+and we let $\omega_0 t = - \phi$ for conveniently speaking the component which
+does not depend on time, and give it a name \emph{initial phase}, that is,
+}
+
+\[x = A\cos(\omega_0t + \phi). \label{eq:gsa}\]
+
+\st{
+By imposing middle-school formula, $\cos (\alpha + \beta) = \cos(\alpha) \cos(\beta) - \sin(\alpha) \sin(\beta)$,
+we arrive at
+}
+\[x = C\cos(\omega_0t)+ D\sin(\omega_0 t),\]
+\st{
+$C = A \cos(\phi)$, $D = -A \sin(\phi)$. But this is just math tricks.
+Now let's talk about physics.
+}
+
+\st{
+Rewrite \eqref{eq:gsa}, but now $A = a$ means oscillation amplitude, where $x$ has unit \si{\meter}:
+}
+\[x = a \cos(\omega_0t + \phi), \label{eq:xx}\]
+\st{
+we differentiate $x$ and obtain velocity
+}
+
+\[v = -\omega_0 C\sin(\omega_0t)+\omega_0 D\cos(\omega_0t)\]
+\st{
+it can be repacked to a simpler form:
+}
+
+\[v=-\omega_0 a \sin(\omega_0t+\phi). \label{eq:vv}\]
+\st{
+We have two undetermined constants $C$ and $D$, assume we already know
+the initial displacement $x_0$ and $v_0$, apply to \eqref{eq:xx} and \eqref{eq:vv},
+we got
+}
+
+\[C = x_0,\]
+\st{
+and
+}
+
+\[v_0 = \omega_0 D.\]
+\st{
+Thus,
+}
+
+\[D= v_0/\omega_0 \]
+\st{
+Now the explicit form of $x$ and $v$ can be written out.
+}
+
+\st{
+The potential energy at any moment is $\frac{ 1 }{ 2 } k x^2$, where $x$ is the displacement and $k$ is the spring constant, substitute \eqref{eq:xx}, we get
+}
+\[U = \frac{1}{2}kx^2 = \frac{1}{2}ka^2\cos^2(\omega_0t+\phi). \label{eq:uu}\]
+\st{
+The potential energy is not constant; the potential never becomes negative. There is always some energy in the spring, but the amount of energy fluctuates with $x$. 
+}
+
+\st{
+The kinetic energy is $\frac{ 1 }{ 2 } m v^2$, substitute \eqref{eq:vv} we get
+}
+\[T = \frac{1}{2}mv^2 = \frac{1}{2}m\omega_0^2a^2\sin^2(\omega_0t+\phi).\]
+\st{
+The kinetic energy is $0$ when $x$ is at the maximum, because then there is no velocity; on the other hand, it is maximal when $x$ is passing through $0$, because then it is moving fastest.
+}
+
+\st{
+The total energy is conserved since
+}
+\[T+U = \frac{1}{2}m\omega_0^2a^2(\cos^2(\omega_0t+\phi)+\sin^2(\omega_0t+\phi))=\frac{1}{2}m\omega_0^2a^2 = \frac{ 1 }{ 2 } k a^2.\]
+\st{
+where $a$ and $k$ are constants for a certain spring. 
+This is true since no friction appears here.
+This means 
+variation of the kinetic energy is just the opposite of that of the potential energy.
+}
+
+\section*{Forced Oscillations}
+
+\st{
+Now let's assume we have a driven force $F(t)$, according to Newton's second law,
+total force = mass times acceleration, we get
+}
+\[m\frac{d^2x}{dt^2} = -{kx}+F(t). \label{eq:fkx}\]
+
+\st{
+For simplicity, just assume a oscillating force
+}
+\[F(t) = F_0 \cos(\omega t).\]
+
+Try the solution (though it can be solved)
+\[x=C\cos(\omega t),\]
+i.e., the mass follows the force.  Not sure it makes sense, but let's try it anyway.
+
+\[-m\omega^2C\cos(wt) = -m\omega_0^2C\cos(\omega t) + F_0\cos(wt)\]
+\st{
+Solve it.
+}
+
+\[C = \frac{F_0}{m(\omega_0^2-\omega^2)}\]
+
+{\bfseries Describe what this means physically.}
+\be
+\item What happens when the driving frequency is very much larger or smaller than the natural frequency of the oscillator? What happens when it is comparable?
+What does the sign of $C$ indicate? How does this vary with driving frequency.
+Sketch a plot of $C(\omega)$ (or better still, write a program to plot it) and describe what it is telling us.  Sketch a plot of the amplitude of motion vs $\omega$.
+\item What happens when the driving frequency goes to zero? 
+\item Say something about initial time vs long-time behavior of the driven oscillator.
+\item What is the average power absorbed by the oscillator from the driving force as a function of frequency when it is in the steady state?  Plot the total energy absorbed by the system as a function of driving frequency.
+\ee
+
+Answer:
+\be
+\item \st{
+  $C$ is a real number.
+  When the driven frequency is much larger than the natural frequency of the 
+  oscillator, $C$ is less than $0$ but approaches to $0$, the sign of $C$ indicates
+  that displacement $x$ is $\pi$ out of phase from the driven force, i.e., it has opposite direction to $F$ direction.
+  When $C$ is smaller than the natural frequency,
+  $C$ is larger than $0$ and approaches to $0$, it is in phase from
+  driven force.
+  
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{c_vs_w.pdf}
+    \caption{$C$ vs $\omega$ and $F$, $x$ vs $t$.}
+    \label{fig:cvsw}
+  \end{figure}
+  See Fig. \ref{fig:cvsw} for reference.
+  
+  If $\omega$ gets close to $\omega_0$, the amplitude $C$ approaches to $\infty$.
+  This is usually called \emph{resonance}, which you may have heard before.
+}
+
+\item \st{
+When the driving frequency is $0$, the force is a constant. Solve an example equation
+\begin{align}\label{eq:3eq}
+  m\frac{d^2x}{dt^2} &= -{kx}+F_0, \\
+  v(0) &= 0, \\
+  x(0) &= x_0,
+\end{align}
+we derive
+\[x(t) = \frac{ F_0 }{ k } + \bigg(x_0 - \frac{ F_0 }{ k }\bigg) \cos(\omega_0 t).\]
+This is an oscillation around $\frac{ F_0 }{ k }$.
+}
+
+\item \st{
+This just goes more than \eqref{eq:3eq}, say we have
+\begin{align}
+  m\frac{d^2x}{dt^2} &= -{kx}+F(t), \\
+  v(0) &= v_0, \\
+  x(0) &= x_0,
+\end{align}
+where 
+\begin{equation}
+  F(t) = \theta(t) F_0 \cos(\omega t),
+\end{equation}
+with $\theta(t)$ to be the Heaviside step function.
+The general solution is
+\begin{equation}\label{eq:gs1}
+x(t) =
+\frac{F_0 }{m(\omega_0^2 -  \omega^2)} \theta (t) \big(\cos (\omega t)-\cos ( \omega_0 t ) \big)
++\frac{ v_0 \sin (\omega_0 t )}{\omega_0}
++x_0 \cos (\omega_0 t ).
+\end{equation}
+The term
+\begin{equation}
+\cos (\omega t)-\cos ( \omega_0 t ) = -2 \sin \Big( \frac{ (\omega + \omega_0)t }{ 2 } \Big)
+\sin \Big( \frac{ (\omega - \omega_0)t }{ 2 } \Big)
+\end{equation}
+is called beat, you will see beat patterns if you have selected correct parameters, like in
+Fig. \ref{fig:above}.
+Thus in most general case, there is no steady state for a non-damped driven 
+oscillator, for the solution is of form \eqref{eq:gs1},
+where only the term 
+$
+\frac{F_0 }{m(\omega_0^2 -  \omega^2)} \cos (\omega t)
+$
+is independent of initial conditions.
+\begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{below}
+  \caption{$\omega < \omega_0$}\label{fig:below}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{at}
+  \caption{$\omega \approx \omega_0$}\label{fig:at res}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{above}
+  \caption{$\omega > \omega_0$}\label{fig:above}
+  \endminipage
+\end{figure}
+}
+
+\item \st{
+The power is 
+\begin{equation}
+  P(t) = F(t) \dot{x}(t) = -\frac{ F_0^2 \omega }{ m(\omega_0^2 - \omega^2) } \cos (\omega t) \sin (\omega t),
+\end{equation}
+so average power is
+\begin{equation}
+\begin{split}
+  \langle P \rangle = \frac{ \omega }{ 2\pi } \int_{0}^{2\pi/\omega} P(t) dt
+  &= -\frac{ \omega }{ 2\pi } \int_{0}^{2\pi/\omega}
+  \frac{ F_0^2 \omega }{ m(\omega_0^2 - \omega^2) } \cos (\omega t) \sin (\omega t)\, dt= 0.
+\end{split}
+\end{equation}
+
+We have instantaneous energies
+\begin{equation}
+  U(t) = \frac{ 1 }{ 2 } k x^2 = \frac{ 1 }{ 2 } m \omega_0^2 C^2 \cos^2 (\omega t),
+\end{equation}
+and
+\begin{equation}
+  T(t) = \frac{ 1 }{ 2 } m v^2 = \frac{ 1 }{ 2 } m \omega^2 C^2 \sin^2 (\omega t).
+\end{equation}
+
+The time-averaged energies are
+\begin{align}
+  \langle U \rangle &= \frac{ \omega }{ 2\pi } \int_{0}^{2\pi/\omega} U(t) dt = 
+  \frac{ 1 }{ 4 } m \omega_0^2 C^2, \\
+  \langle T \rangle &= \frac{ \omega }{ 2\pi } \int_{0}^{2\pi/\omega} T(t) dt = 
+  \frac{ 1 }{ 4 } m \omega^2 C^2.
+\end{align}
+
+The total energy is
+\begin{equation}
+\langle E \rangle = \langle U \rangle + \langle T \rangle = \frac{ 1 }{ 4 }
+\frac{ F_0^2 (\omega^2 + \omega_0^2) }{ m (\omega_0^2 - \omega^2)^2 }.
+\end{equation}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\linewidth]{c_vs_w_energy.pdf}
+  \caption{Energy vs $\omega$}
+  \label{fig:cvswenergy}
+\end{figure}
+See Fig. \ref{fig:cvswenergy} for references.
+}
+
+
+\ee
+
+\section*{Complex number representation}
+[Keep going writing the logic that explains the equations you see.  Make it like a story that can be read like a novel.]
+
+\st{
+Physicists like to use complex number representation for describing periodic motions as in this case. A complex number can be written in the form of real part and imaginary part:
+}
+\[a = a_r + ia_i = x + iy\]
+\st{
+Or can be written in the form of magnitude and phase:
+}
+
+\[x+iy = re^{i\theta}\]
+\st{
+The magnitude of a complex number can be taken by multiplying itself with its complex conjugate, which gives the square of magnitude:
+}
+
+\[aa^*=(x+iy)(x-iy)=r^2e^{i\theta}e^{-i\theta}=r^2\]
+\st{
+An important formula for complex number is the Euler's formula, which says the exponent of a pure imaginary number has a cosine for its real part, and a sine for its imaginary part. In this way, the $\cos(\omega t)$ we used before is simply the real part of the complex exponential function $e^{i\omega t}$:
+}
+
+\[e^{i\omega t}=\cos{\omega t}+i\sin(\omega t)\]
+\st{
+And we can write $F(t)$ as the real part of a complex function $F_0 e^{i\omega t}$:
+
+}
+
+\[F(t) = \Re(F_0e^{i\omega t})\]
+\st{
+We can also use complex phase in representing an oscillation phase. If the oscillation phase can be written as $\cos(\omega t - \phi)$, we can simply put the phase argument into a complex exponential, so that
+}
+
+\[F(t) = F_0e^{i(\omega t-\phi)}\]
+\st{
+We will eliminate the real part symbol ``R", and simply use complex number for representing physical quantities. On one hand, a complex number is simply a combination of real part and imaginary part, both of which can be treated as solutions to the equations we solve. As our differential equations are usually linear, we can always take the real part at any step to get the real physical quantity we need. Moreover, it is conventional that when treating physical quantities oscillating with a given frequancy $\omega$, the real part and imaginary part stands for two oscillating components that are 90 degree out of phase with each other. We always define the real part (cosine term) as the in-phase component, and the imaginary part (sine term) the out-of-phase component. The $e^{i\omega t}$ phase is also called ``reference phase", as any phase in oscillation is taken with respect to this phase. As in this case, we can separate the $e^{i\omega t}$ term and leave the constant term into a complex number called complex amplitude of oscillation:
+}
+
+\[F = F_0e^{-i\phi}e^{i\omega t}=\widehat{F}e^{i\omega t}\]
+Can we use this complex number formulation to actually solve a real differential equation problem? e.g.,
+\[\frac{d^2x}{dt^2}+\frac{kx}{m} = \frac{F}{m}=\frac{F_0}{m}\cos(\omega t).\]
+Naively, let's assume there is such a thing as a complex force and a complex displacement (there isn't) but let's see what happens
+\[\frac{d^2(x_r+ix_i)}{dt^2}+\frac{k(x_r+ix_i)}{m} = \frac{(F_r+iF_i)}{m}\]
+\[\frac{d^2x_r}{dt^2}+\frac{kx_r}{m}+i\left(\frac{d^2x_i}{dt^2}+\frac{kx_i}{m}\right)= \frac{F_r}{m}+i\frac{F_i}{m}\]
+[draw a conclusion.  Don't solve it, but discuss what would happen if the spring restoring force was proportional to $-kx^2$.]
+
+\st{
+As we can see, this differential equation is a linear equation, and we can simply combine two solutions $x_r$ and $x_i$ into a new solution $\hat{x} = x_r + ix_i$. However, if we consider a nonlinear system whose spring restoring force is proportional to $-kx^2$, then the principle of superposition no longer hold. We would not expect a solution in a harmonic oscillating form, but something more complicated, and it would be pointless to use Euler's formula and replace $\cos(i\omega t)$ \& $\sin(i\omega t)$ with $e^{i\omega t}$.
+}
+
+OK, we are ready:
+\[\frac{d^2 x}{dt^2}+\frac{k x}{m} = \frac{\widehat{F}}{m}e^{i\omega t}\]
+\st{
+  Here we use $\hat{x}$ for the complex amplitude, while the complete oscillating function is
+}
+
+\[x = \hat{x}e^{i\omega t}\]
+\st{
+Eliminating all the reference phase terms, we get
+
+}
+
+\[(i\omega)^2\hat{x}+(k\hat{x}/m)=\widehat{F}/m\]
+\st{
+When taking time derivative to the oscillating function $x$, the $e^{i\omega t}$ term yields a factor $i\omega$, while other terms remain constant. Therefore, we can simply replace all the $d/dt$ operators with $i\omega$ factors. Solving directly for $\hat{x}$, we get the complex amplitude of oscillation:
+}
+
+\[\hat{x}=\frac{\widehat{F}/m}{(k/m)-\omega^2}\]
+\st{
+Replacing $k/m$ with the natural frequency $\omega_0$, we get
+
+}
+\[\hat{x}=\frac{\widehat{F}}{m(\omega_0^2-\omega^2)}.\]
+
+\section*{Forced oscillator with damping}
+\st{The complex number representation for solutions of oscillator problems just provides a mathematical vehicle that allows more complex problems to be solved analytically, such as a damped, driven, harmonic oscillator.  This is important because although we have received good insights from undamped oscillator, damping is a fact of life in the real world so we really want to be able to handle it.
+  
+  Damping implies a frictional term which can be very complicated in general, but to begin with we can think about a straightforward one that is, nonethess, of some physical relevance.  This is where the friction force is proportional to the velocity of the particle.  This is a good approximation if the mass on the spring is moving through oil for example.  If the mass is stationary there is no force, and the faster the mass is moving the greater the force, and we assume that it is linear because, well, why?}
+
+\[F_c = -c\frac{dx}{dt}\]
+\st{
+  where $F_c$ is the frictional force, $\frac{dx}{dt}$ is the velocity of the mass, and c is the coefficient. It will be convenient, in our mathematical analysis, to write the constant c as m times γ to simplify the equation a little. The minus sign indicates the fact that the direction of the friction is opposite the direction of the velocity.
+  Now, we can write out the corresponding 2nd order differential equation with constant coefficients for the damping oscillator 
+}
+\[ F(t) = m \frac{d^2x}{dt^2}+c\frac{dx}{dt}+ kx\label{eq:dkx}\]
+\st{
+  By replacing $c$ by $m\gamma$, and $k$ by $m\omega_0^2$, we have
+}
+\[ \frac{F}{m} = \frac{d^2x}{dt^2}+\gamma\frac{dx}{dt}+ \omega_0^2x \label{eq:damping}\]
+
+\st{
+  Then we apply the complex number representation again. We write $F$ as the real part of $\hat{F} e^{i \omega t}$ and $x$ as the real part of $\hat{x} e^{i \omega t}$, and substitute these into Eq. \eqref{eq:damping}
+}
+\[[(i\omega)^2\hat{x}+\gamma(i\omega)\hat{x}+\omega_0^2\hat{x}]e^{i\omega t}=(\widehat{F}/m)e^{i\omega t}\]
+\st{
+  If we divide by $e^{i \omega t}$ on both sides, then we can obtain the response $\hat{x}$ to the given force $\hat{F}$.
+}
+\[\hat{x} = \frac{\widehat{F}}{m(\omega_0^2-\omega^2+i\gamma\omega)} \label{eq:hatx}\]
+\st{
+  $\hat{x}$ is given by $\hat{F}$ times a certain factor. There is no technical name for this factor, we may call it $R$ for discussion purposes:
+}
+\[R = \frac{1}{m(\omega_0^2-\omega^2+i\gamma\omega)}\]
+\[\hat{x} = \widehat{F}R \label{eq:xfr}\]
+$R$ is also a complex number. We may write it as the real part plus the imaginary part or the magnitude times the phase:
+\[R=p+iq\]
+or
+\[R=\rho e^{i\theta}\]
+\st{
+  Eq. \eqref{eq:xfr} tells us that $\hat{x}$ is equal to $\hat{F} R$ . So, writing $R=\rho e^{i\theta}$ as another name for $R$, we get
+}
+\[\hat{x} = \widehat{F}R=\rho e^{i\theta}F_0e^{i\phi}=\rho F_0e^{i(\theta+\phi)}\]
+\st{
+  Finally, going even further back, we see that the physical $x$, which is the real part of the complex $\hat{x} e^{i \omega t}$, is equal to the real part of $\rho F_0 e^{i(\theta+\phi+\omega t)}$. But $\rho$ and $F_0$ are real, and the real part of $e^{i(\theta+\phi+\omega t)}$ is simply $\cos(\omega t+\theta+\phi)$.
+}
+\[x = \rho F_0 \cos(\omega t + \phi + \theta)\]
+[in broad terms, what does the amplitude of the oscillation depend on? What is the meaning of the terms in the argument of the cosine?
+Describe this in terms of language consistent with a system forcing and a system response.]
+\st{
+  This tells us that the amplitude of the response is the magnitude of the force $F$ multiplied by a certain magnification factor $\rho$; this gives us the “amount” of oscillation. It also tells us that $x$ is not oscillating in phase with the force, which has the phase $\phi$, but is shifted by an extra amount $\theta$. Therefore $\rho$ and $\theta$ represent the size of the response and the phase shift of the response.
+  
+  Now let us work out what $\rho$ is. If we have a complex number, the square of the magnitude is equal to the number times its complex conjugate
+}
+\[\rho^2 = \frac{1}{m^2(\omega_0^2-\omega^2+i\gamma\omega)(\omega_0^2-\omega^2-i\gamma\omega)}\label{eq:rho2}\]
+\[= \frac{1}{m^2[(\omega_0^2-\omega^2)^2+\gamma^2\omega^2]}\]
+\st{
+  In addition, the phase angle $\theta$ is easy to find, for if we write
+}
+\[1/R = 1/\rho e^{i\theta}=1/(\rho e^{-i\theta})=m(\omega_0^2-\omega^2+i\gamma\omega)\]
+\st{
+  $\tan(\theta)$ can also easily calculated by taking the ratio of imaginary part to real part
+}
+\[\tan(-\theta)=\frac{\gamma\omega}{(\omega_0^2-\omega^2)}\]
+\[\tan(\theta)=-\frac{\gamma\omega}{(\omega_0^2-\omega^2)}\]
+[sketch or plot $\rho^2$ and $\theta$ vs. $\omega$ ]
+
+In the vicinity of a resonance (where $\omega \sim \omega_0$, and for the case where the friction term is small, we can find an
+approximate expression for Equation~\ref{eq:rho2}.)
+\st{
+  Since $\omega_0^2 - \omega^2=(\omega_0 - \omega)(\omega_0 + \omega)$, if $\omega$ is near $\omega_0$ this is nearly the same as $2 \omega_0 (\omega_0 - \omega)$ and $\gamma \omega$ is nearly the same as $\gamma \omega_0$. Using these in \eqref{eq:hatx}, we see that
+}
+\[\omega_0^2-\omega^2+i\gamma\omega \sim 2\omega_0(\omega_0 - \omega + i\gamma/2)\]
+\st{
+  It is easy to find the corresponding formula for $\rho^2$
+}
+\[\rho^2 = \frac{1}{4m^2\omega_0^2[(\omega_0-\omega)^2+\gamma^2/4]}\]
+\st{
+  if we call the maximum height of the curve of $\rho^2$ vs. $\omega$ one unit, and we ask for the width $\Delta\omega$ of the curve, at one half the maximum height, the full width at half the maximum height of the curve is
+}
+\[\Delta\omega = \gamma\]
+\st{
+  supposing that $\gamma$ is small. The resonance is sharper and sharper as the frictional effects are made smaller and smaller.
+  
+  As another measure of the width, some people use a quantity $Q$ which is defined as
+}
+\[Q=\omega_0/\gamma\]
+\st{
+  The narrower the resonance, the higher the $Q$: $Q=1000$ means a resonance whose width is only 1000th of the frequency scale.
+}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\linewidth]{ddho.pdf}
+  \caption{Damping}
+  \label{fig:ddho}
+\end{figure}
+
+\st{
+This is not required by the homework but a general solution to equation
+\begin{equation}
+\frac{ d^2 x }{ dt^2 } + 2 \gamma \frac{ dx }{ dt } + \omega_0^2 x = \frac{ F_0 }{ m }
+\cos (\omega t)
+\end{equation}
+is
+\begin{equation}\label{eq:gs2}
+x(t) = \frac{ F_0 }{ m \sqrt{(\omega^2 - \omega_0^2)^2 + (2 \gamma \omega)^2} }
+\cos (\omega t + \varphi) + e^{-\gamma t} \big(
+A f(t) + B g(t)
+\big),
+\end{equation}
+where
+\begin{equation}
+\tan \varphi = \frac{ 2 \gamma \omega }{ \omega^2 - \omega_0^2 }
+\end{equation}
+and
+\[
+f, g =
+\begin{cases}
+\cos(\sqrt{\omega_0^2 - \gamma^2} t), \sin(\sqrt{\omega_0^2 - \gamma^2} t)  &  \text{underdamped case}, \\
+1, t    &  \text{critical damping}, \\
+\cosh(\sqrt{\gamma^2 - \omega_0^2} t), \sinh(\sqrt{\gamma^2 - \omega_0^2} t)
+& \text{overdamping}.
+\end{cases}
+\]
+The first term of \eqref{eq:gs2} is a particular solution or called "steady-state" solution,
+the second term of it is a general solution or called "transient" solution.\footnote{
+See \url{https://www.andrew.cmu.edu/course/33-231/shm.pdf} for more detail.
+}
+Here are some example images:
+}
+\begin{figure}[!htb]
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{below2}
+  \caption{$\omega < \omega_0$}\label{fig:below2}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{at2}
+  \caption{$\omega = \omega_0$}\label{fig:at res2}
+  \endminipage\hfill
+  \minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{above2}
+  \caption{$\omega > \omega_0$}\label{fig:above2}
+  \endminipage
+\end{figure}
+
+
+
+
+
+
+
+
+
+\end{document}

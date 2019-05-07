@@ -1,0 +1,281 @@
+%\documentclass[preprint,tighten,prl]{problemDB}
+\documentclass[]{revtex4}
+%\documentclass[]{book}
+%\newcommand{\sm}[1]{{\[\]}}
+\newcommand{\sm}[1]{{\[#1\]}}
+%\newenvironment{\sm}{\begin{equation}{\end{equation}}
+%\newcommand{\st}[1]{#1}
+\newcommand{\st}[1]{}
+
+\input{./mydefs}
+
+\begin{document}
+
+\title{Physics of Crystalline Materials\\
+MSAE 4200\\
+Worksheet: Linear Response Theory II}
+
+\maketitle
+
+\vskip 24pt
+{Names and Roles of team members:}
+
+\vskip 24 pt
+Goal: The goals of this spreadsheet are:
+\begin{itemize}
+\item To expand linear response theory beyond the simple harmonic oscillator and derive some more general results.
+\end{itemize}
+
+\cork{}
+\vskip 12pt
+
+
+
+%\vskip 12pt
+Start this worksheet in class in your groups and discuss it.  There will also be some class discussion to get things off to a good start.  This worksheet will be finished in groups for  homework.
+
+%\section*{What is this worksheet about?}
+\section*{OK, here we go:}
+Usual preamble:
+\begin{enumerate}
+  \item Figure out your group
+  \item Figure out who is team leader
+  \item Introduce yourselves to each other
+  \item Figure out who is scribe for this worksheet
+  \item Discuss and write down the team goal
+  \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.
+\end{enumerate}
+
+This is mostly a
+``here is the logic, write the equations" worksheet
+
+\section*{Review of where we are}
+\bi
+\item We learned that if we have linear systems we can apply superposition and resultant forces and responses are just the sum of each of the different
+contributory forces.
+\item This allows us to use Fourier analysis which is particularly handy because we are building up arbitrary forces from sums of sinusoidally oscillating forces,
+and we know how to solve our linear differential equation for the case of sinusoidal forces
+\ei
+
+\section*{Another representation for a complicated time-dependent force}
+We solved our linear differential equation for the special case of the sinusoidal force, and then showed that we can build up any time-dependent force as a
+sum (or integral) of many sinusoidal forces.  This is called Fourier analysis.  But are there any other special solutions to our equation that we can find?
+What about an {\it impulsive} force?  This is like the blow of a hammer.  We hit the oscillator with a force for a short period of time, but then quickly turn the
+force off again.  This is obviously another rather interesting situation, because again, we can represent any arbitrary force, as a series of very sharp hammer
+blows with some well defined amplitude or strength, for example, as illustrated in the figure
+%
+%\fig{0.5}{impulse.png}{an abitrary time-dependent force represented as a series of impulses}
+%
+We just need to figure out how to find a solution to our linear harmonic oscillator equation for this impulse case!  For that we need a bit
+more math review.
+
+\section*{Dirac delta function}
+Dirac's delta function is our mathematical tool for applying very short impulses of something.  The Dirac delta is written as
+\sm{\delta(x-a)}
+for variable $x$ and an impulse at variable $x =a$.  The function has value zero everywhere in $x$, except at position $a$, where it has value
+infinity. It is further defined that its integral over all $x$ returns 1,
+\sm{\int_{-\infty}^\infty \delta(x-a)dx = 1.}
+From this we see that the dimensions (i.e., units) of $\delta(x-a)$ are $1/[\mathrm{dimensions/units\ of\ } x]$.
+
+On the one hand the $\delta$ function is a horrible thing because it is not a well behaved function, and is
+singular and not differentiable and not well behaved at all, so why do we love it so much?  Well, first it seems to represent quite well
+mathematically our impulse in the sense that it is a short-sharp-shock.  On the other, it is a thing of very great beauty when it appears in integrals
+because it makes them trivial to evaluate.  Any function, times $\delta (x-a)$, integrated over all space, just returns the value of that
+function at position $a$, i.e.,
+\sm{\int_{-\infty}^\infty f(x)\delta(x-a)dx = f(a)}
+
+This was a general discussion of the Dirac $\delta$-function, in terms of a general variable. Of course, for our case we are most interested in
+an impulsive force of amplitude $F_1$ that is applied at some fixed time $t_1$ which would be written as
+\sm{F_1\delta(t-t_1)dt}
+
+\section*{Fourier transform revisited}
+We wrote the Fourier transform (and inverse transform) definitions in the previous worksheet.  Here we will just collect together some
+really killer results without showing that they are true (they are!  No fake news here).
+Here we will call our functions as $x$ and make them a function of time (since this is what we are primarily interested in in these worksheets), though the
+results can be generalized to any (well behaved) functions on any independent variable axes.  Notationally we will write the Fourier transform of
+$x(t)$ as $\tilde{x}(\omega)$.  The $\tilde{x}$ indicates this is the Fourier transform of the function $x$ and the $\omega$ is the variable
+that the Fourier transform is a function of.  It will always be a (well defined) variable that has dimensions/units that are the inverse of the variable
+of the non-Fourier transformed function.  In this case it must have dimensions of $1/[\mathrm{Time}]$ so is a frequency, and in particular, it
+has a $2\pi$ out front making it an angular frequency.
+\bi
+\item The Fourier transform is linear, so
+      \sm{\tilde{\{x+y\}}(\omega)= \tilde{x}(\omega)+\tilde{y}(\omega)}
+      and
+      \sm{\tilde{ax}(t) = a\tilde{x}(t)}
+      where $a$ is a constant.
+\item The Fourier transform of the delta function $\delta (t-t^\prime)$ is given by
+      \sm{\int_{-\infty}^\infty e^{-i\omega t}\delta(t-t^\prime)dt = e^{-i\omega t^\prime}}
+\item The inverse transform is then of course \sm{\frac{1}{2\pi}\int_{-\infty}^\infty e^{i\omega (t-t^\prime)}d\omega = \delta(t-t^\prime)}
+      This is pretty cool, because now we know how to evaluate an integral of a complex exponential.
+\item For example, this allows us to solve the integral of a complex function of the form $\int_{-\infty}^\infty e^{i(\omega-\omega^\prime)t} dt$,
+    which is the inverse Fourier transform of $e^{-i\omega^\prime t}$
+      \sm{\frac{1}{2\pi}\int_{-\infty}^\infty e^{i(\omega-\omega^\prime)t} dt  = \delta(\omega-\omega^\prime)}
+\item The Fourier transform of $x^*(t)$ is $\tilde{x}^*(-\omega)$
+\item There is another really cool result.  We can Fourier transform a function, $x(t)$ in general, but what do we get if we
+      try and Fourier transform the time-derivative of $x(t)$, $\dot{x}(t) = \frac{dx}{dt}$.  The result is
+      \sm{\tilde{\dot{x}}(\omega) = i\omega\tilde{x}(\omega).}
+      This is really cool because we can Fourier transform a differential equation into an algebraic equation, which could make it easier to solve!
+\item Completing this thought, the Fourier transform of $\ddot{x}(t)$ is
+       \sm{\tilde{\ddot{x}}(\omega) = i\omega\tilde{\dot{x}}(\omega)= -\omega^2\tilde{{x}}(\omega)}
+\item The convolution $h(t)=f(t)\otimes g(t)$ of two functions $f(t)$ and $g(t)$ is written
+       \sm{h(t)=\int_{-\infty}^\infty dt^\prime f(t-t^\prime)g(t^\prime)\label{convolution} }
+       The convolution theorem states that the Fourier transform of $h(t)$, $\tilde{h}(\omega)$, is
+       \sm{\tilde{h}(\omega)=\tilde{f}(\omega)\tilde{g}(\omega)}
+       So a nasty integral was turned into a simple product.
+\ei
+\section*{Familiar territory}
+OK, let's return to our favorite driven damped HO.  We could solve it as a differential equation for special solutions. But let's try a different trick.
+First we write the equation for the DDHO to remind ourselves.
+\sm{m\frac{d^2x}{dt^2}+\gamma m \frac{dx}{dt} + m\omega_0^2 x = F(t).}
+(You should have this learned pretty much by heart by now!).  OK, let's divide through by $m$ and write the derivatives using the dot notation,
+\sm{\ddot{x}+\gamma  \dot{x} + \omega_0^2 x = F(t)/m.}
+OK, Now let's take the fourier transform of this equation:
+\sm{-\omega^2\tilde{x}(\omega) + i\omega\gamma\tilde{x}(\omega) + \omega_0^2\tilde{x}(\omega) = \frac{\tilde{F}(\omega)}{m}}
+Pulling the $\tilde{x}(\omega)$ out and rearranging a bit we get
+\sm{[\omega_0^2-\omega^2 + i\omega]\tilde{x}(\omega) = \frac{\tilde{F}(\omega)}{m}}
+which is starting to look awfully familiar.   We can further rearrange to get an expression for the Fourier transform of the
+susceptibility, $\tilde{\chi}(\omega)$
+\sm{\tilde{\chi}(\omega)=\frac{\tilde{x}(\omega)}{\tilde{F}(\omega)}=\frac{1}{{m}\left[{\omega_0^2-\omega^2 + i\omega}\right]}}
+Which is just our familiar frequency dependent susceptibility that we got by solving the differential equation for the particular
+case of the sinusoidal force.  But now we have something new.  The Fourier transform of the displacement, $\tilde{x}(\omega)$ is given by this susceptibility
+times the Fourier transform of the force in general, not just if the force is sinusoidal.  
+Let's check that it is working as expected.  We know the solution when the the force
+is given by $F_0e^{i\omega t}$.  In this case the Fourier transform of the force is
+\sm{F_0e^{i\omega_F t} = F_0\delta (\omega-\omega_F)}
+The Fourier transform of $x$, $\tilde{x} (\omega)$ is then
+\sm{\tilde{x}(\omega)=\frac{F_0}{m[\omega_0^2-\omega^2 + i\omega}]\delta (\omega-\omega_F)}
+and $x(t)$, which is the inverse transform of $\tilde{x}(\omega)$, is
+\sm{{x}(t)=\frac{F_0e^{-i\omega_F t}}{m[\omega_0^2-\omega_F^2 + i\omega_F]}}
+Which is the result we got before (rather easier and more intuitively!)
+
+But.....Now if the force was an impulse at time $t^\prime$, i.e., $F_{t^\prime}\delta(t-t^\prime)$,
+then we can easily evaluate $\tilde{F}(\omega)$, it is
+\sm{\tilde{F}(\omega) =  F_{t^\prime}e^{i\omega t^\prime}.}
+so $\tilde{x}$ is given by
+\sm{\tilde{x}(\omega) = \left[\frac{F_{t^\prime} e^{i\omega t^\prime}}{m[\omega_0^2-\omega^2 + i\omega]}\right]}
+Taking the inverse transform of this is a bit tricky, but it would yield the displacement vs. time expression
+
+\section*{Linear response theory}
+In this section we will do some pretty fancy math tricks to derive a result that is very general.  Basically, we will find
+a result for a complex susceptibility that holds for the HO that we have already studied but goes much further.
+
+Let's consider a situation where we have a generalized displacement, $x(t)$ that is the result of some time-varying force $F(t)$.  This time we won't
+specify a particular form for $F(t)$, so it doesn't have to be sinusoidal or even oscillating in a regular way.  Also
+it doesn't have to be a mechanical force on a mass.  The only requirement that the product $Fx$ is an energy.  When
+this is the case we say that $F$ and $x$ are conjugate variables.  For the mass on the spring this was the case because Force times displacement
+is work which is energy.  Next we assume linearity, so a doubling of the force doubles the displacement.  This was so in the
+oscillator case because of the linear spring constant.
+%We found this necessity in the case of the damped harmonic oscillator where there was a phase lag in the system due to the applied force.
+
+OK, just to get started, and neglecting any time-dependence to begin with, state the linearity relation mathematically:
+\sm{x = \chi F.}
+where $\chi$ is the constant of proportionality.  Now, in general, the force is time-dependent so everything may be written as a function
+of time,
+\sm{x(t) = \chi (t) f(t).\label{x=chif}}
+We can also allow the possibility that there is a delay in the system response.  So a force applied at time $t^\prime$ results in a
+system response at some later time $t$.  For example, if it takes time for the force to propagate through a system or a force is an
+impulse applied earlier.  In this case we
+need a susceptibility that gives a measure of the response at some time delay $t-t^\prime$ from when the force was applied at $t^\prime$,
+i.e.,
+\sm{\chi (t-t^\prime).}
+Now we need to rewrite our equation for the displacement at some time
+due to the force, Eq.~\ref{x=chif}, to account for this. The displacement at time $t$
+depends on the effects of all the forces that were applied at some earlier time, $t^\prime$, integrated over all $t^\prime$ and so we get
+\sm{\langle x(t)\rangle_F = \int_{-\infty}^{\infty} \chi(t-t^\prime)F(t^\prime)dt^\prime .\label{xtAverage}}
+where the angle brackets with subscript $F$, $\langle\ldots\rangle_F$, indicate the response is the resultant of the effects
+of all the forces applied over all (earlier) times.
+
+Now, of course, we only want to integrate over past-times, so we could take limits from $-\infty$ to $t$,
+but we are going to use a few little math tricks to enforce this causality criterion mathematically whilst still,
+for mathematical convenience, retaining limits $-\infty$ to $\infty$.
+
+First, we recognize that Eq.~\ref{xtAverage} looks just like Eq.~\ref{convolution}, it has the form of a convolution,
+at least it does if we leave the limits over all time,
+past and future.  Using the convolution theorem, if
+\sm{y(t) = w(t)\otimes x(t) }
+where $\otimes$ indicates the convolution.  Then
+\sm{\tilde{y}(\omega)=\tilde{w}{(\omega)}\tilde{x}(\omega)}
+where $\tilde{y}(\omega)$ is the Fourier transform of $y(t)$ and so on.
+
+So let's take the Fourier transform of $x(t)$,
+\sm{\tilde{x}(\omega) = \int_{-\infty}^{\infty}dt\,e^{-iwt}x(t).}
+and for completeness, the inverse transform is written as
+\sm{{x}(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}d\omega\,e^{iwt}\tilde{x}(\omega)}
+where use the convention that the prefactor for the direct transform is 1 and the prefactor for the
+inverse transform is $1/2\pi$.
+There will be similar expressions for $\tilde{\chi}(\omega)$ and $\tilde{F}(\omega)$.
+
+With our nice Fourier transform expressions, $\tilde{y}(\omega)$, in hand we can rewrite Eq.~\ref{xtAverage} in Fourier
+space as
+\sm{\langle \tilde{x}(\omega)\rangle_F = \tilde{\chi}(\omega)\tilde{F}(\omega).}
+This is just like the case of the simple harmonic oscillator that we did above. However, now the equation is rather
+broadly applicable, in fact it holds for any linear situation.
+
+Now for the convolution theorem to work our integration limits for the FT had to be from $-\infty$ to $\infty$, but we know
+that only the forces applied in the past have an effect on the current displacement, not forces that may be applied in the future.
+To reconcile these factors we will specify that
+$\chi(t)$ has the form
+\sm{\chi(t) = y(t)\theta(t)\label{chit}}
+where $\theta(t)$ is the Heaviside step function, which has value 1 for $t>0$ and 0 for $t<0$. $y(t)$ is a function that replaces
+$\chi (t)$.  It must equal $\chi(t)$ for any time $t>0$ but
+can equal anything at all for $t<0$, and our equations will still make physical sense.
+
+If $y(t)$ can equal anything over some domain, we may as well allow it to equal something that makes the math easier, so we
+will make it so that it makes $\chi(t)$ to be an odd function, i.e.,
+\sm{y(t) = -\chi (|t|)}
+for $t<0$
+(of course it has to equal ${\chi}(t)$ in the physically reasonable $t>0$ region).
+
+Now we have expressed $\chi(t)$ as a product in $t$-space, so by the inverse convolution theorem, in the Fourier space it will be
+a convolution,
+\sm{\tilde{\chi}(\omega)=\frac{1}{2\pi}\int_{-\infty}^{\infty}d\omega^\prime\tilde{\theta}(\omega^\prime-\omega)\tilde{y}(\omega^\prime).\label{chiomega}}
+
+The Heaviside step function is written as follows,
+\sm{\theta(t)=
+  \begin{cases}1&t>0\\0&t<0
+\end{cases}}
+
+and by a sweet piece of mathematical elegance, we can write 1 as $\lim_{\epsilon\rightarrow 0}\,e^{-\epsilon t}$, and so we change the
+definition of the Heaviside function to
+\sm{\theta(t)=\lim_{\epsilon\rightarrow 0}\begin{cases}e^{-\epsilon t}&t>0\\0&t<0\\\end{cases}}
+which allows us to write an expression for its Fourier transform
+\sm{\tilde{\theta}(\omega)=\int_0^\infty dt e^{-i\omega t}e^{-\epsilon t}}
+whose solution is
+\sm{\tilde{\theta}(\omega)=\frac{1}{i\omega+\epsilon}}
+which can be turned into a complex number in standard form, with a real and an imaginary part,
+\sm{\tilde{\theta}(\omega)=\frac{\epsilon}{\omega^2+\epsilon^2}-\frac{i\omega}{\omega^2+\epsilon^2}.}
+Now, taking the limit $\epsilon\rightarrow 0$,
+\sm{\tilde{\theta}(\omega)=\pi\delta(\omega)-\frac{i}{\omega}}
+where the delta function comes from the fact that the real part is everywhere zero, except when $\omega=0$
+
+Substituting this into Eq.~\ref{chiomega} we get
+\sm{\tilde{\chi}(\omega) = \frac{1}{2}\tilde{y}(\omega)-\frac{i}{2\pi}\wp\int_{-\infty}^\infty \frac{\tilde{y}(\omega^\prime)d\omega^\prime}{\omega^\prime-\omega}.\label{chiasy}}
+Here the $\wp$ in front of the integral indicates that we should take the Cauchy principal value of the integral when $\omega = \omega^\prime$ and the
+integral is not well behaved.  This is a trick for evaluating an integral for a function that blows up at some point, where the contribution to the integral at
+that point is determined by taking a limit, $\epsilon$ and driving it to zero at the singular point.
+So, for example, $\wp\int_{-\infty}^\infty dx/x = \lim_{\epsilon\rightarrow 0^+}\int_{-\infty}^{-\epsilon} dx/x + \int_{\epsilon}^\infty dx/x$.
+Anyway, we don't get hung up on this detail.  Bottom line is that if we put that $\wp$ there we can evaluate that integral, so it is just like a
+well-behaved integral without the $\wp$.
+
+Now, write $\tilde{\chi}{(\omega)}$ in terms of its real and imaginary parts
+\sm{}
+
+and from Eq.~\ref{chiasy}, we can get expressions for the real part and the imaginary part.  The trick is to figure out which terms in Eq.~\ref{chiasy}
+is the real term and which is the imaginary one.  It looks as if the integral is the imaginary part because it has an $i$ in front of it.  But we need
+to go a bit more slowly.  We need to figure out whether $\tilde{y}(\omega)$ is real, imaginary or complex.  Well, by construction we made $y(t)$ to be an
+odd function, which means that its Fourier transform is pure imaginary, so actually the $\frac{1}{2}\tilde{y}(\omega)$ term is the imaginary part of the
+susceptibility and the real-part is
+\sm{-\frac{i}{2\pi}\wp\int_{-\infty}^\infty \frac{\tilde{y}(\omega^\prime)d\omega^\prime}{\omega^\prime-\omega}}
+and substituting $\tilde{\chi}^{\prime\prime}$ for $\tilde{y}$ for we get the Kramers-Kronig relation
+\sm{\tilde{\chi}^\prime(\omega) = \wp\int_{-\infty}^\infty\frac{{\tilde{\chi}^{\prime\prime}(\omega^\prime)d\omega^\prime}}{\pi(\omega^\prime-\omega)}}
+There is a similar derivation for the reverse Kramers-Kronig expression that links the imaginary part to the real-part.
+
+The expression for $\tilde{\chi}^\prime(0)$,
+\sm{}
+is the real-part of the static susceptibility, which is an integration over all the dissipation of the system.
+
+[Show that the real and imaginary parts
+of the susceptibility for the HO oscillator satisfy the K-K relation above.
+Discuss the importance of this relationship and its generality (what assumptions went into the derivation).  ]
+
+\end{document}

@@ -1,0 +1,569 @@
+%\documentclass[preprint,tighten,prl]{problemDB}
+\documentclass[]{revtex4}
+%\documentclass[]{book}
+%\newcommand{\sm}[1]{{\[\]}}
+\newcommand{\sm}[1]{{\[#1\]}}
+%\newcommand{\st}[1]{#1}
+\newcommand{\st}[1]{}
+
+\input{./mydefs}
+
+\begin{document}
+
+\title{Physics of Crystalline Materials\\
+MSAE 4200\\
+Worksheet: Fluctuation Dissipation Theorem}
+
+\maketitle
+
+\vskip 24pt
+{Names and Roles of team members:}
+
+\vskip 24 pt
+Goal: The goals of this spreadsheet are:
+\begin{itemize}
+\item To develop the basic tools for understanding the important fluctuation-dissipation theorem
+\item To understand the fluctuation-dissipation theorem
+\end{itemize}
+
+\cork{}
+\vskip 12pt
+
+
+
+%\vskip 12pt
+Start this worksheet in class in your groups and discuss it.  There will also be some class discussion to get things off to a good start.
+This worksheet will be finished in groups for  homework.
+
+%\section*{What is this worksheet about?}
+\section*{OK, here we go:}
+Usual preamble:
+\begin{enumerate}
+  \item Figure out your group
+  \item Figure out who is team leader
+  \item Introduce yourselves to each other
+  \item Figure out who is scribe for this worksheet
+  \item Discuss and write down the team goal
+  \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.
+\end{enumerate}
+
+\section*{Review of where we are}
+\bi
+\item We learned that if we have linear problems there are some rather general results that are true, in particular, linear problem + causality
+mean that we can derive a definite relationship between the real and imaginary parts of the susceptibility.
+\item This means that if we can measure either the real-part, or the imaginary part, over a sufficiently wide range of frequencies,
+we can determine the one we don't know frm the other using the Kramers-Kronig relations.
+\item The imaginary part is gives the dissipation in the system
+\ei
+
+\section*{Damped driven harmonic oscillator without the spring!}
+We have spent lots of time understanding how a mass on a spring works under many different conditions: no damping, damping, no driving force, driving force
+and all the combinations.  There is one case left that we haven't discussed, the case where there is no spring!  Let's do that case just for completeness.
+Wait, how can that possibly be of physical interest?  Actually, it turns out that this is one of the most important cases of all.  So important that
+the equation that describes it has a name and it took Einstein to solve it in 1905, making Einstein famous at the time (well, kind-of, we
+will get back to that).  It is also relevant for
+our discussion of materials.  It switches our focus from the spring to the damping fluid.  So this problem is one where a mass is being dragged
+through a viscous fluid by a force.  This is another material susceptibility problem but where the viscosity of the fluid itself is the
+susceptibility.  OK, let's go with this already.  The equation is called the Langevin equation and is just the damped forced harmonic oscillator
+without the restoring force $-kx$
+\sm{m\ddot{x} = -\alpha \dot{x} + F(t)}
+If the force is a steady constant force, $F(t)= F$ which doesn't vary in time, the mass will accelerate to a terminal velocity and then just
+stay at that velocity.  This is what happens to you if you fall out of an airplane, for example.  In this case $m\ddot{x} = 0$.  We get that the
+velocity is proportional to the force, which looks like another linear response equation where $\alpha^{-1}$ is the susceptibility, i.e.,
+\sm{}
+In this case we call $\alpha^{-1}$ as a {\it mobility}.  If the particles moving were charged particles, such as electrons, then the
+charge current would be proportional to their velocity (if there is a uniform density of carriers).  So in the case where there was
+a constant, non-time-varying electric potential applied, we would get Ohm's law,
+\sm{}
+In this case, the material susceptibility is called {\it conductivity}, or {\it resistivity}, [strictly speaking, which of those two is
+the ``susceptibility"?] depending which way around we write the
+equation.  It is a (temperature dependent) material property, so the frictional drag an electron feels as it moves through a material
+depends on details of that material.
+
+So Ohm's law is just a solution to the Langevin equation and it describes the motion of electrons through a viscous medium where there is
+friction.  The power lost in a resistor is exactly $\langle P\rangle$ which is the rate of the force doing work against the friction.
+
+Let's find the transient solution to this equation.  Remember, we can find this by setting $F=0$ and solving that equation, then
+because our differential operator, in this case the Langevin equation, is linear, we can add these solutions back to the solution
+with the force acting, but the solutions will be decaying in time, transients, and so disappear when the system reaches steady state.
+The equation now looks like
+\sm{m\dot{v}=-\alpha v}
+which since the quantity ($v$ in this case) is proportional to its own first derivative, we will try a solution that is an
+exponential,
+\sm{v(t)=v_0 e^{-\alpha t/m}.}
+So the velocity dies off like an exponential with a time-constant (i.e., the time it takes for the velocity to fall to $1/e$ times its initial value)
+of $m/\alpha$
+
+\section*{thermodynamic systems}
+Up till now we have studied a system that is a single mass on a spring.  This is a mechanical system.  But most materials problems we need to
+consider systems of large number of particles (the atoms) and these are ``thermodynamic" systems.  It seems that such large systems would
+have so many degrees of freedom that it would be impossible to model them and predict how they will behave in time.  However, the miracle of
+thermodynamics is that the behavior of such systems can be quite predictable.  There are a relatively small number of state variables,
+such as temperature, pressure, energy, entropy and so on.  These quantities take on single values for a system in equilibrium.  Statistical
+mechanics shows us why this is the case.  Actually, there are a huge number of different microstates that the system can be in, but for an
+isolated system (cannot exchange energy or particles with its surroundings) at equilibrium
+the system will tend towards a set of state variable values that correspond to the macrostate that has the most number of
+microstates that give that macrostate, i.e., the most probable macrostate.  Similar considerations also apply to systems that can exchange
+energy and particles, they have a different definition for the equilibrium but it is a stable macrostate where the state variables are rather
+stable and have particular values.  To find the values of the state variables (we call these the expectation values), we have to average over all the possible microstates, weighted
+by the probability that system is in that microstate.  So the expectation value of the internal energy, $E$ of the system is written as $\langle E\rangle$,
+where the angle brackets are widely used to mean ``take the average value", which makes this connection implicitly.
+
+\section*{Taking Averages}
+The angle brackets mean ``take an average", or more precisely ``find the mean value".  For our oscillator, for some measurable
+system quantity, $x$,
+$\langle x\rangle$ would mean, take an average over a long time, much longer than
+than one period. This could be written in the following way as a ratio of integrals
+\sm{\langle X\rangle = \frac{\int_{-\infty}^\infty X(t) dt}{\int_{-\infty}^\infty dt}}
+Though it has a problem that the denominator (and quite possibly the numerator) is infinite.  Yikes, what to do?
+Well, physically, if we know that the oscillator is in steady state it is just executing the same motion again
+and again.  What we really want to know is the mean of this quantity over one cycle, and then over a longer period
+of time it would just be $n\times$ this value if we care about $n$ cycles.   For example, in the case of energy absorbed
+by the frictional force in the forced oscillation, this would be infinite if we ran the system for infinite time, but
+it was more useful to talk about the average power (rate of doing work). So,
+if the oscillator is in the steady-state, we often just do the integrals over one complete oscillation
+(or any integral number of cycles),
+\sm{\langle X\rangle = \frac{\int_{0}^{{2\pi/\omega}} X(t) dt}{\int_{0}^{2\pi/\omega} dt}}
+If we are dealing with a system that can have different states and we want to find the average over all of
+those those different states of the system then
+the average is written as
+\sm{\langle x\rangle=\frac{\int_{-\infty}^{\infty} xp(x)dx}{\int_{-\infty}^{\infty} p(x)dx}\label{avx}}
+where $p(x)$ is related to the probability that we find the system in the state where the value of the
+varible is $x$.  Strictly we call $p(x)$ the probability density function and it has the meaning that
+the likelihood of finding our system with a value of $x$ between $x$ and $x+dx$ is $p(x)dx$.  It is
+really related to the number of ways that the system can arrange itself so that $x$ takes some particular
+value, or similarly, how much time it dwells in a state with vale $x$.
+
+Actually, strictly, when we found the time-average mean value $\langle x\rangle$ of our oscillator we were implicitly doing this
+actually.  In this case, we know that time is moving uniformly, and so when we evaluated $x(t)$ at each time-point,
+the oscillator spent the same amount of time in each time interval $dt$ (by definition) and so $p(x)$ was just a
+constant.  So this new definition for the mean is not a new definition, just a generalization to a more general case.
+
+We normally normalize $p(X)$ such that
+\sm{\int_{-\infty}^{\infty} p(x)dx=1}
+which means that the denominator can be left off in Eq.~\ref{avx} and it may be rewritten
+\sm{\langle x\rangle={\int_{-\infty}^{\infty} xp(x)dx}}
+
+A word about ``stochastic variables".  We sometimes in statistics talk about stochastic variables.  These are variables where we cannot predict
+what value they will take in any given sampling, but we do have some kind of predictability about the system because we know something about the
+underlying probabilities that it will take certain values.  Think of tossing a coin here.  We don't know whether it will come up heads or tails
+in any given situation, but if it is a fair coin-toss, and we do it many times, it will roughly come up heads and tails an equal number of times.
+We often give stochastic variables a capital letter, like $X$ rather than $x$ (but not always!). OK, so in this case, we can estimate the mean of
+some value $X$ for a large number of samples (measurements) of this event (e.g., coin tosses) in the same way, where now $p(X)$ is the underlying
+probability distribution that governs the behavior of the stochastic variable. The mean equation therefore looks the same but with capital $X$ instead
+of small $x$,
+\sm{\langle X\rangle={\int_{-\infty}^{\infty} Xp(X)dX}.}
+
+[The laws of classical physics are deterministic, not probabilistic. Think about what conditions must prevail for some deterministic event like a coin
+toss or die throw to take on a stochastic nature.]
+
+
+\section*{Partition Function}
+The key for evaluating these averages is to know $p(x)$ the probability density of the quantity $x$.  In thermodynamic systems we know this in a few special cases
+which are so important that we give the special names.   The first is the case when the system is energetically isolated.  This case is called
+the microcanonical ensemble (for some reason).  In this case microstates (particular arrangements of the atoms among energy states) fall into two categories.
+They are either allowed, because the sum of all the energies adds up to the fixed total energy of the system, or not allowed, because the sum of all the energies
+of all the particles wouldn't add up to the total system energy.  We assume that all the microstates that are allowed will have the same probability because none
+of them are lower or higher in energy than the other, so how do we prefer one over another?  The probabilities of all the allowed microstates are therefore the same and
+the probability, $p_m$ of the $m$th microstate is given by \sm{1/M} where $M$ is the total number of allowed microstates.  In this case, $\langle x\rangle$ is given
+by
+\sm{\langle X\rangle=\frac{1}{M}{\sum_{m=1}^{M} X_m}\label{microstates}}
+where the sum is taken over all the allowed microstates.
+
+We can define a concept called a macrostate, which is a state of a system where, when we measure the values of observables like total energy, mass and
+so on, we get a particular set of values for these things.  Now there may be many ways of arranging the atoms among energy states of the system
+microscopically that give
+these same values for the macroscopic observables. In other words, there are many microstates that yield the same macrostate.
+We can define a quantity, $\Omega (x,E)$, simply counts the number of microstates in our macrostate
+that has quantity $x$ with value $x$ and quantity $E$ with value $E$.  We can call it the ``multiplicity" of our macrostate.  So now,
+we have two ways to take the same average, we can either sum over the microstates, as in Eq.~\ref{microstates}, or we can sum over the
+macrostates, but taking into account their multiplicity,
+\sm{\langle X\rangle=\frac{1}{M}{\sum_{j=1}^{J} \Omega_{X_j} X_j}\label{microstates}}
+where the sum over $j$ is now a sum over macrostates.  For large systems (and thermodynamic systems are large) this can be rewritten as
+an integral where we will have to turn the multiplicity into a probability density, but we won't do that here for now.
+
+Now, things are easy to compute in the microcanonical ensemble (fixed energy system) so physicists love it,  but it is not
+an easy situation to deal with experimentally, so chemists and materials scientists kind of hate it.
+We much prefer a situation where the system is in thermal equilibrium with a bath at constant temperature, $T$, for example.
+This case is called the ``Canonical Ensemble".  The physicists (Boltzmann actually) have taken the time to find out the solution for this
+useful case shown that in this case. The probability that a particular microstate that has energy $\epsilon_m$ is
+occupied is given by the Boltzmann relation
+\sm{p_m(\epsilon_m)=e^{-\epsilon_m/kT}/Z}.
+Here $k$ is Boltzmann constant and the normalization constant, $Z$ is called the partition function and is given by
+\sm{Z = \sum_m e^{-\epsilon_m/kT}}
+where the sum is over all microstates.
+
+Since this partition function depends only on the energy of the microstate and not any other microscopic aspect of it, it may be rewritten as
+\sm{Z = \sum_j \Omega(\epsilon_j)e^{-\epsilon_j/kT}}
+where the sum over $p$ is now the sum over macrostates that have energy $\epsilon_p$ and $\Omega(\epsilon_p)$ is the number of microstates that give
+the $p$'th macrostate.  If (as is generally the case for thermodynamic systems) the energies of the macrostates form a continuum in $E$, we can rewrite
+it as an integral,
+\sm{Z = \int \rho(\epsilon)e^{-\epsilon/kT}d\epsilon}
+where $\rho(\epsilon)$ is called the ``density of states" which is defined such that $\rho(\epsilon)d\epsilon$ is the number of microstates
+that have energy between $\epsilon$ and $\epsilon+d\epsilon$.
+
+$Z$ is just the weighted sum of Boltzmann factors, and the value of $\rho(\epsilon)e^{-\epsilon/kT}d\epsilon$ is therefore the probability that these
+macrostates are occupied.  We thus have a recipe for computing the mean, or ``expectation value", of some state variable, $X$, $\langle X\rangle$, by
+writing
+\sm{\langle X\rangle=\frac{1}{Z}\int X(\epsilon)\rho(\epsilon)e^{-\epsilon/kT}d\epsilon.}
+This is wonderful because it means that we can compute these averages we are interested in for a material if we can simply find a way of
+determining the density of states of the material.  We don't know how yet, but there are ways.  We will discuss it later.
+
+The physicists also worked out the math for the case of an open system that can exchange energy and particles with its surroundings, and
+is in equilibrium with a large bath of energy and particles at some fixed temperature and chemical potential of the particles.  You have learned
+about this if you have taken a Statistical Mechanics course and I won't describe it here, but it is known as the Grand Canonical Ensemble case.  I am
+only repeating the canonical ensemble result because it gives useful background insight into how nature works.  But we will now
+return back to the most simple, canonical ensemble case.....
+
+%\section*{degrees of freedom and equipartition}
+%\sjb{fixme}
+%[cribbed from wikipedia]In statistics, the number of degrees of freedom is the number of values in the final calculation of a statistic that are free to vary. The number of independent ways by which a dynamic system can move, without
+%violating any constraint imposed on it, is called number of degrees of freedom
+
+\section*{fluctuations around the mean}
+For a system in equilibrium, all the measurable expectation values of things like energy and mass and magnetization and so on take on certain fixed values,
+the expectation values, and we know that these are the properly weighted mean values of those things, where the mean can either be taken over microstates
+or macrostates as long as we do the weighting right in each case.  Now, the implication of a mean value is that the system doesn't always take exactly that value.  For example, the actual value can fluctuate around that
+value in time, but when we average over all time that is the value that we get. Our oscillator was like that, the instantaneous kinetic energy continually
+fluctuated, but when we averaged over an integral number of cycles, we got a single number for the mean KE.  What we are interested in now is how much the
+system deviates away from that mean value.  These are the fluctuations of the system.  For our oscillator, if the observable was the displacement, the mean
+value of the displacement $x(t)$ is
+\sm{\langle x(t)\rangle = 0.}
+The maximum displacement away from this mean is of course the amplitude, $a$.  But in general we would like a more widely applicable measure of
+the fluctutations that gives some measure of how big or small fluctuations are, but could be used when maximal excursions aren't well defined.
+For this we turn to the variance, and its square root, the standard deviation.
+
+The variance, $Var(X)$ is defined as
+%\sm{\langle x\rangle=\sum_i x_iP_i}
+\[Var(X) = \langle (X - \langle X\rangle)^2\rangle.\]
+The variance of $X$ is just a new macroscopic observable that has a mean value that we can estimate in the usual way by taking averages
+\sm{\langle (X - \langle X\rangle)^2\rangle={\int_{-\infty}^{\infty} (X-\langle X \rangle)^2 p(X)dX}}
+
+[evaluate the variance of the amplitude for our (undriven, undamped) simple harmonic oscillator.  Take the simplest case where $x(t)=a\cos(\omega_0 t)$]
+
+OK, we have a well defined measure of the amplitude of fluctuations of some observable around the mean value for our system.  Let's play around with this
+a bit.  Let's shift gear to a thermodynamic system, and we are interested in a general quantity $X$, whose expectation value is $\langle X\rangle$.  We will
+consider the microcanonical ensemble, so we will fix the energy of the system to some value $E_0$.  The number of microstates that yield a value of $X=x$ is
+given by
+\sm{\Omega(x,E_0).}
+Now, by our reasoning above, we know that the $p(x)$ that we use in determining averages will be proportional to $\Omega(x,E_0)$.  Now, recall
+thermodynamics and Statistical Mechanics where we learned about a quantity called entropy, $S$ that could be written in terms of this multiplicity,
+\sm{S(x,E_0) = k_B \ln (\Omega(x,E_0))}
+where $k_B$ is the Boltzmann constant.  This equation can be rearranged to make $\Omega$ the subject of the equation,
+\sm{\Omega(x,E_0) = e^{S(x,E_0)/k_B}}
+OK, so we now have an un-normalized expression for $p(x)$ (or more strictly $p(x,E_0)$, but since $E_0$ is fixed we can drop it on the understanding that
+this particular $p(x)$ only holds for a particular $E=E_0$) we can evaluate some averages, not least the variance which is what we want.
+
+First we recognize that our system is in equilibrium.  Let's say that $\langle X\rangle = x_0$ is the equilibrium value of $X$.  We are interested in fluctuations
+away from this value, i.e.,
+\sm{x-x_0.}
+There is one more thing we know about a thermodynamic system at fixed energy at equilibrium and that is that the entropy is maximal.  Mathematically, this
+means that
+\sm{\frac{\partial S(x,E_0)}{\partial x}=0\label{eqm}}
+at equilibrium.  Now, we also know that the fractional fluctuations are small, so even though we don't know the exact functional form of $S(x,E_0)$ in the
+vicinity of $x_0$, we can do a Taylor series expansion of $S$ in the vicinity of $x_0$, i.e.,
+\sm{S(x) = S(x_0)+\left(\frac{\partial S}{\partial x}\right)_{x=x_0}(x-x_0)+\frac{1}{2}\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}(x-x_0)^2+O((x-x_0)^3)}
+which, because of Eq.~\ref{eqm}, shortens to
+\sm{S(x) = S(x_0)+\frac{1}{2}\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}(x-x_0)^2+O((x-x_0)^3).}
+and taking just the first two terms and writing $x-x_0$ as $\Delta x$ we get
+\sm{S(x) = S(x_0)+\frac{1}{2}\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}(\Delta x)^2.}
+this gives us $p(x)$ of
+\sm{p(x) \propto e^{S(x_0)/k_B}e^{\left(\frac{1}{2}\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}(\Delta x)^2/k_B\right)}.}
+You have to stare at it for a bit, but if you squint your eyes, you can convince yourself that this is the functional form for a Gaussian.
+Absorbing the prefactor into the proportionality, and writing this in the form of a Gaussian, we get
+\sm{p(x) \propto e^{-(\frac{\Delta x^2}{2\sigma^2})}}
+where $\sigma^2$ is given by
+\sm{\sigma^2 = -\frac{k_B}{\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}}}
+From the properties of a Gaussian, we actually know that $\sigma$ is the standard deviation of the Gaussian
+and $\sigma^2$ is the variance, which immediately gives an expression for $\langle \Delta x^2\rangle$ of
+\sm{\langle \Delta x^2\rangle=-\frac{k_B}{\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}}\label{deltax}}
+
+This is not super-helpful because we don't know $\left(\frac{\partial^2 S}{\partial x^2}\right)_{x=x_0}$, or do we?
+Remember back to those magical hours you spent studying thermodynamics.  We had state variables such as $S$, then
+we had first derivatives of them that were related to things like temperature and pressure.  For example,
+$T$ is defined in terms of $S$ and internal energy $U$ as
+\sm{1/T = \left(\frac{\partial S}{\partial U}\right)_V.}
+And then later in the course you learned Maxwell's relations and found expressions for second derivatives of state variables
+with respect to each other and found that these were related to things like specific heat.  Specifically for specific heat
+in terms of $S$ and $U$,
+\sm{\frac{1}{T^2C_V} = - \left(\frac{\partial^2 S}{\partial U^2}\right)_V}
+which means that we do have an expression for $\left(\frac{\partial^2 S}{\partial x^2}\right)$ that we can plug into Eq.~\ref{deltax}
+for the special case where it is fluctutations in internal energy that we are interested in.  Substituting into Eq.~\ref{deltax}
+for the case of $\langle \Delta U^2\rangle$ we get
+\sm{\langle \Delta U^2\rangle=-\frac{k_B}{\left(\frac{\partial^2 S}{\partial U^2}\right)}=k_BT^2C_V.}
+Something quite remarkable just happened, but we don't really realize it yet.  First, the fluctuations in $U$ increase with increasing
+temperature, which makes sense and is not so remarkable.  Especially given the equipartition theorem, so we know that kinetic energy per
+degree of freedom scales like T, so fluctutations in that quantity might also be expected to scale similarly.  The other thing
+we notice is that the fluctuations scale with the heat capacity.  So a larger heat capacity results in larger fluctuations.  I am not
+sure if this makes sense or not.  But something interesting happened.  $C_V$, the heat capacity, is related to $c_V$ which is the specific
+heat capacity (the heat capacity per mole of gas, or per gram of gas, or per unit of gas), which is a material property.  In fact it is
+related to one of those susceptibilities we have been talking about. The specific equation it comes from is
+\sm{\Delta H = c_V\Delta T}
+This is a linear response function.  If we put $\Delta H$ of heat into the system the temperature will change by $\Delta T$, so the temperature
+change is the response of the system to the forcing of putting in $\Delta H$ of heat.  The susceptibility is therefore
+\sm{\chi = 1/c_V}.
+
+What happened here?  We were not forcing the system but studying the spontaneous fluctuations of the system close to equilibrium,
+and what popped up was a response function susceptibility.  It means that there is some intimate relationship between the susceptibility
+that depends on the frictional response of the system to a perturbation and on spontaneous fluctuations.  This is a particular example
+of the fluctuation-dissipation theorem that we will derive more formally below.  Spontaneous system fluctuations, and the damping response of a system
+to a perturbation, are closely related.
+
+We will rationalize this slightly amazing result below, but it has spectacularly useful implications.  It means that we can study linear response functions
+and material susceptibilities by doing experiments that measure spontaneous equilibrium fluctuations of the system.  If we can find an experiment
+that is easier to do that measures the fluctuations than one that perturbs the system and measures the response, then go ahead...do the easier experiment,
+you will get the same information.
+We will discover later that scattering experiments can yield information about spatial and temporal fluctuations in systems, so we can study material
+properties directly by doing scattering experiments.
+
+Now, why might fluctuation amplitudes depend on the frictional (dissipative) response of a system to a force?  With hindsight it is not so
+remarkable.  Let's say a fluctuation develops, so the atoms in some region of our system happen randomly to start moving faster than the average velocity
+(think if it as a group of atoms moving together). They then will have to push their way through the rest of the material which will resist their motion
+and will tend to slow them down, removing their extra kinetic energy by dissipating it though whatever dissipation channels they have.  The bigger the friction,
+the quicker the faster atoms will be slowed and the quicker the patch of faster moving atoms will slow to the average speed again.  So the dissipation mechanisms
+that the system have that tend to slow down the driven mass on the spring are the same dissipation mechanism that tend to damp out fluctuations
+
+\section{Correlation Functions}
+
+OK, now we have the general idea, let's do a more formal derivation of the fluctuation-dissipation theorem that is more general than this
+particular case where we did a bit of hand-waving and applied it to a particular system of a gas at constant volume.  This may be overkill,
+I really want you to understand the importance and the concept of the fluctuation-dissipation theorem, not the formal definition, but
+it introduces some important new math/physics concepts that we will use quite a lot when we talk about scattering experiments, so I would rather
+go through this right now.
+
+First we need to generalize the concept of the correlation function.  You are now very comfortable with the concept of the mean, or average,
+and also with fluctuations away from the mean.  When things fluctuate away from the mean, it implies some ``correlations" have developed.  Like
+the example we discussed above with gas atoms moving in a gas and a group of them spontaneously got together and started to move as a clump a bit
+faster than the average.  This implied that their motions were, for a short period of time, not random but there was some small component of their
+velocities that was all moving in the same direction, just by chance.   To develop that fluctuation we had to develop a clump of atoms that had
+something in common with each other (a different than average component of the velocity moving in a particular direction) which implied that
+spontaneously they developed correlation in their motion.  Then later the fluctuation disappeared because the non-random motion was damped out by the
+dissipation of moving through the rest of the gas.  But while the fluctuation was there, the correlation in the motion was there, and vice versa.
+Fluctuations and correlations go hand in hand.  Another example is a density fluctuation where a large system, a gas or liquid for example, has an
+average density, but here and there the density is higher or lower.  If the fluid was colored, we would see lighter and darker colored patches, which
+would make like a painting (a painting is  just colors that have been given correlations by the artist...fluctuate this point to be more green, that point
+to be more red, and so on).  In our density example, the different color intensity patches would be fluctuating in space and in time
+(often fluctuations are like that).  This means that measures of fluctuations are also measures of correlations.
+
+So far we have only one measure of fluctuations, it is the variance, which we remind ourselves is given by
+\sm{Var(X) = \langle (X - \langle X\rangle)^2\rangle.}
+And not only that, we also know how to evaluate it since it is just a particular average but now of a different variable,
+\sm{\langle (X - \langle X\rangle)^2\rangle={\int_{-\infty}^{\infty} (X-\langle X \rangle)^2 p(X)dX}}
+There is also a nice simplification that can happen here.
+$\langle X \rangle$  is the mean value of $X$ and $\langle (X -\langle X\rangle)^2\rangle$ is the variance.
+If we expanding out the square we get we get
+\sm{\langle X^2 + \langle X\rangle^2-2X\langle X\rangle\rangle}
+which simplifies to
+\sm{\langle X^2\rangle-\langle X\rangle^2.}
+To do this you need to apply something that you have learned before.  If you look at the equation for
+how we evaluate the mean, you may (or may not) notice that taking the average, $\langle \ldots\rangle$ is
+a linear operator!  this means that $\langle  X+Y \rangle$ can be written as
+\sm{\langle  X+Y \rangle = \langle  X \rangle+\langle  Y \rangle}.
+Another thing to notice is that taking the mean of a mean just returns the mean, because the mean is just a
+number, and our mean operator is a linear operator so if we take the mean of $aX$ we get
+\sm{\langle  aX \rangle = a\langle  X \rangle}
+where $a$ is a constant, and since $\langle  X \rangle$ is also just a constant for $\langle\,\langle  X \rangle\, \rangle$
+we get
+\sm{\langle\,\langle  X \rangle\, \rangle = \langle  X \rangle\langle 1\rangle = \langle  X \rangle}
+....well, you get the picture.
+There, you worked hard earlier in the course to understand linear operators, and now you are getting a nice
+return on that investment....really understanding things gives a big pay back later!  It is hard work, but
+it is worth it.
+
+
+
+Let's examine this equation for the variance in more detail.  Actually, by writing just $Var(X) = \langle (X - \langle X\rangle)^2\rangle$
+we have actually swept quite a bit of stuff under the carpet.
+Implied in here is that we can find a value for $X$ at some time or some position in space (or both), $X(\vec{x}=\vec{x}_0,t=t_t0)$
+and then subtract the mean value for $X$ from that at each space/time point, then square that quantity, then average this quantity over all space
+or all time or both.  To make it concrete, we could just pick one point in space, $\vec{x}=\vec{x}_0$ and fix it.  Then we could measure $X$ at this
+point over time, and do the time average of $\Delta X^2$.  This would tell us about the temporal fluctuations at that point in our system.
+Or, we could pick a particular
+time-point, $t=t_0$ and take a kind of instantaneous photograph of our system at this time point, and then average over all the pixels in our
+photograph.  It turns out that for a well-behaved thermodynamic system these two averages result in the same answer.  This is known as ergodicity.
+Putting it backwards, in a system that is ``ergodic" these two averages will be the same.  Some systems are not ergodic, so be careful.  For
+example, sometimes fluctuations get pinned by impurities in the system.  The system is not clean!  But a clean thermodynamic system should be
+ergodic.
+
+But we see that in general we can take the average many different ways.  Let's say we picked one time point and averaged
+$\Delta X^2 = (X-\langle X\rangle)^2$ over all space, so if $X(t)$ is a function of time, we evaluated the particular average
+\sm{\langle (X - \langle X\rangle)^2\rangle=\langle (X(\vec{x},t=t_0) - \langle X\rangle)(X(\vec{x},t=t_0) - \langle X\rangle)\rangle_\vec{x}}
+where the $\langle \ldots \rangle_\vec{x}$ signifies an average over all space.  By ergodicity, this could also be written as
+\sm{\langle (X - \langle X\rangle)^2\rangle=\langle (X(\vec{x}=\vec{x}_0,t) - \langle X\rangle)(X(\vec{x}=\vec{x}_0,t) - \langle X\rangle)\rangle_t}
+which is a different average, so in general will give a different result, but in an ergodic system just happens to give the same result.
+
+As we discussed before, this is a measure of the fluctuations in the system, which, as we also discussed, is a measure of correlations in our
+system.  We also found that the Variance is one such quantity. So we call this a Correlation function, and we give it a symbol like $C_{XX}$.
+\sm{C_{XX}=\langle (X-\langle X\rangle)^2\rangle}.
+The subscripted X's indicate it is telling about the correlations between the quantity $X$ and the quantity $X$ in our system. For example,
+if we were interested in density fluctuations and density correlations we would evaluate
+\sm{C_{\rho\rho}=\langle (\rho-\langle \rho\rangle)^2\rangle}
+which is the density-density correlation function.
+
+Actually, strictly these are not correlation functions but variances, or covariances if they are between two different quantities, e.g.,
+\sm{C_{XY}=\langle (X-\langle X\rangle)(Y-\langle Y\rangle)} .
+We sometimes want to normalize the correlation functions by dividing by $\sigma(X)\sigma(Y)$ where here $\sigma$
+denotes the standard deviation.  Maybe we could call the
+normalized quantity as $c_{XY}$ where the lower-case letter indicates it is normalized.
+When we do this we find that perfectly correlated quantities (e.g., the correlation of a quantity with itself) this quantity takes the value 1,
+for anticorrelated variables (i.e., when one quantity is above the mean by $x$ the other is exactly below the mean by $x$) this quantity
+has value -1, and for uncorrelated quantities (i.e., the first quantity is above the mean by $x$ but the second quantity could take any value whatsoever)
+it has value 0.  Physicists are sometimes a bit loosy goosy about whether they are talking about a covariance or a correlation, always calling them
+correlation functions because that is the physics behind it, rather than the math, so just be careful.
+
+Now we have this concept, we see that we can generalize it like heck and go and look for just about every correlation under the sun that we can
+think of by doing all sorts of different averages.
+Actually, this is completely the basis of data science, which is trendy right now.  It is using algorithms to discover correlations in
+data, so if you are interested in data science (and I know some of you are), well (1) it was invented by physicists, materials scientists
+and mathematicians centuries ago and (2) you had better really understand this section of the worksheet!  For example, let's say that you find
+a correlation in stock prices such that when one stock price goes up, another stock also goes up.  This could be pretty useful information.
+If the price of stock 1 is $S_1$ and that of stock 2 is $S_2$ then we want to evaluate $C_{S_1S_2}$ and now we know how to do it.  We just go
+back to the historical record of stock prices and pick some ``beginning of time" which is maybe the earliest that we have data for, then
+we evaluate
+\sm{ C_{S_1S_2} = \langle (S_1(t) - \langle S_1\rangle)(S_1(t) - \langle S_1\rangle)\rangle_t}
+which from our simplification above is
+\sm{C_{S_1S_2} = \langle S_1(t)S_2(t) \rangle_t - \langle S_1\rangle\langle S_2\rangle)}
+where these angle brackets are just integrating (or in some numerical computer program, summing) the stock prices and normalizing by the elapsed time.
+If the two stock prices are uncorrelated, for example, one is fertilizer and the other is nail polish or something, then
+\sm{C_{S_1S_2}=0}
+If they are correlated then
+\sm{C_{S_1S_2}\ne 0}
+and if they were normalized to real correlation functions, you could tell how correlated they were by how close to unity $c_{S_1S_2}$ evaluated to.
+When you invest it is good to be diversified, so that if one sector of the stock market crashes, and you are completely invested in that sector,
+you don't lose all your money.  So you could make sure that your stock portfolio was highly diversified by evaluating $c_{S_1S_2}$ between all your
+stocks and adjusting which stocks you own so that they were all zero, or based on your risk tolerance, adjust it so it is non-zero but at the level
+you feel comfortable at (non-zero will result in larger fluctuations, which are sometimes up and sometimes down!).
+
+Now a lot of data science is just applying black-box tools to datasets and getting things out, but understanding what is underneath can really
+help you.  For example, here we may realize that the mean values of the stock prices actually are time dependent, they tend to grow over time, or at
+least the stock market as a whole does, so we may want to adjust the definition of our correlation function to take a running average for the mean,
+or to multiply the mean by some overall change in the average stock market price to take care of some underlying time-dependence of the market.
+
+But even better, what if you could find a correlation between the price of stock 1 at some time $t$ and the price of stock 2 at some later time, $t+\Delta t$.
+Let's say that it was a positive correlation ($>1$).  If you had this, it is the same as just printing money basically because you could monitor the price
+of stock 1 and whenever that price went up you could quickly buy stock 2, and whenever stock 1 price went down, you could quickly sell stock 2, and you
+could keep doing this and on the average, you would come out ahead and make lots and lots of money.  In that case we want to evaluate the particular
+covariance function
+\sm{c_{S_1S_2} = \langle S_1(t)S_2(t+\Delta t)\rangle_t-\langle S_1\rangle\langle S_2\rangle}
+People have done this and gotten very rich.
+Well, the first thing to say is that when correlations like this appear in the market and are discovered, they quickly disappear.  They are called
+inefficiencies in the market, and people like to exploit market inefficiencies but when that happens the inefficiency goes away because many people try and
+by stock 2 at the same time, which depresses the price of stock 2 at exactly that time which drives away the correlation.  Investment banks and hedge funds
+try and beat this by trading more quickly than the competition, which has given rise to speed trading, where trades are executed electronically responding to
+microsecond moves in the market.  It produces a kind of arms race where each actor needs a faster computer, and because transmission of information takes time,
+even though it happens at the speed of light, the computers are located as physically close as possible to where the trades are registered.  This is actually
+funding developments in high performance computing as well as paying quants, who are data scientists, many of whom are actually physicists who know data science
+because they really understand what is going on underneath.  It is easier to teach a physicist data science than to teach a data scientist physics.  But before
+you get too excited about this, be aware that my belief is that this behavior is fundamentally immoral, so you can take part in it and get rich, and it is
+legal, but it is the
+moral equivalent of stealing.  The reason is that if there is no increase in the underlying value of the company whose stock it is, and yet the stock price goes
+up, all that has happened is a redistribution of wealth between the people buying and selling the stocks.  If you buy a stock and sell it later for a higher price
+you made money, but someone else lost money (again, if the underlying company didn't fundamentally change).  This is OK if there are no correlations in the market
+that are being exploited.   Stock traders will argue that they provide
+liquidity in the markets, so that you can get your money out at any time when you need it and that is the value they add, and when you buy and sell
+stocks everyone is on a level playing field and taking chance against randomness.
+But it is difficult to argue that any value is added to society
+by taking stock trades down from seconds, or even minutes, to microseconds. It is just seems to be a way for some people to steal from other people legally. It
+doesn't seem to be any different than insider-trading, which is illegal, where someone knows a likely correlation before everyone else by knowing some
+secret information, and then acts on it.  I believe
+that you should all get rich, but to do it by developing something of such value to society that in the process everyone else's life also gets better.
+I know you can  do it if you try.  I would rather that you die at an old age happy than die rich.
+
+But enough lecturing on morality.  There is a serious point here, that depending on what we are trying to understand about our system, be it
+stock prices or material properties, there are many different averages we can take between different quantities and they will all have their
+own correlation functions and tell us different things about the system.  Many correlation functions will be fundamentally boring, but other
+correlation functions will yield up key insights about our system.
+
+An important correlation
+function is the auto-correlation function, which is the correlation of a variable with itself at some later time, but averaged over time,
+so it is the value of the variable at time $t=0$, times the value of the variable at time $t=t$, averaged over all time.
+This is the similar to the correlation function that allowed us to get rich on the stock market actually since it
+could also be written as the correlation of a variable at time $t^\prime$ with itself at time $t-t^\prime$ averaged over
+all $t^\prime$). In the stock market case we were correlating two different stock prices.  Here we
+time-correlate a quantity with itself, so we are learning about temporal fluctuations in that quantity.
+In this case the autocorrelation function, $c_{XX}$, would be written as
+\sm{c_{XX}(t)=\langle X(0)X(t)\rangle_{t^\prime}-\langle X\rangle^2}.
+The resulting correlation function is a function of time, but really it is a function of time-delay,
+the separation in time of the first measurement and the second measurement of $X$. Typically if
+we measure the same quantity two times very close together, the results will be very similar and highly
+correlated but if we measure them after a long time-lag, the correlations will die out, because of dissipation!
+So this is a very important correlation function for studying our material susceptibilities because of the
+fluctuation dissipation theorem (FDT).  Actually, this is why we are introducing it in our derivation of the FDT!
+
+Another side note.  In many cases of interest the mean values of quantities is zero.
+In this case $\langle X\rangle=\langle Y\rangle=0$ and this part is dropped in the equation,
+but be careful.  In general you have to worry about subtracting the product of the means.
+
+
+\section*{Spectra and Power Spectral Density}
+Consider a generalized displacement ${x}(t)$.  Its Fourier transform may be written mathematically as
+\sm{\tilde{x}(\omega) = \int_{-\infty}^\infty e^{-i\omega t}x(t)dt}
+This is, obviously, a function of $\omega$ and so is some weird function that shows, for a given time, what the
+contribution to the displacement is for all the different frequency components (well, that is what a Fourier transform does
+in general.  But remember from the harmonic oscillator, if we take the mod-squared of the displacement and we average it
+over a complete cycle, we get the time-average amplitude
+of the motion (which was half the actual amplitude, remember?),
+and we learned that that told us something about the power dissipated in the damped driven oscillator, $\langle P\rangle$, so
+it is a quantity of considerable interest.  What if we take the mod-squared of this Fourier transform, $|\tilde{x}(\omega)|^2$
+and then the time-average of that, $\langle |\tilde{x}(\omega)|^2\rangle$?
+It presumably is (proportional to) the contribution to the dissipated power coming from the region of the spectrum between
+$\omega$ and $\omega + d\omega$.  If we therefore measure a spectrum of energy absorbed by the oscillator vs. $\omega$
+(remember the transmission-of-IR-light-through-germanium experiment for example?), this quantity is the height of the curve
+at some $\omega$ and it tells how much of the absorbed power of the oscillator comes from each part of the spectrum.  So
+it is a quantity relatively easy to measure and relatively interesting physically.  It is so important that it has a name,
+it is called the power spectral density.   We will see that this quantity
+is closely related to the autocorrelation function of $x(t)$, which you remember measures correlations/fluctuations
+in $x$.
+
+To see this, let's write the equation for the time autocorrelation function of $x(t)$, $C_{xx}(t)$ [write it in terms
+of the angle-bracket expression, and also write the full integral]
+\sm{C_{xx}(t)=\langle x(t)x(0)\rangle = \int_{-\infty}^\infty x(t-t^\prime)x^*(t^\prime)dt^\prime\label{cxx}}
+Because $x(t)$ in general may be a complex number, and we are after a correlation function that is a real quantity,
+we seek the mod-squared, which is the product of $x$ and its
+complex conjugate, $x^*$ (when we discussed correlation functions in general above, we didn't complicate things
+with complex numbers, but we have to be careful here to do it right).  the resultant $x^2=|x^2|$ gives the proper
+real-number amplitude we are after. Now, take the
+
+Now, we will take a little side tour to show an important result, which again is so important it has been given a name,
+the Wiener-Khinchin theorem.  This result shows that $C_{xx}(t)$ is equal to the inverse Fourier transform of the
+power spectral density.  First, write $C_{xx}(t)$ in terms of its convolution integral,
+\sm{.}
+Next, everywhere where you see an $x(t)$, replace it with the inverse Fourier transform of $\tilde{x}(\omega)$ by writing
+the inverse transform expression (the integral)
+\sm{}
+We are going to change the order of integration and things, so give the integration variable a different symbol in each of
+those inverse transforms.  i.e., integrate over $\omega$ in one and over $\omega^\prime$ in the other. Now,
+change the order of the integrals so that they are nested with terms that depend on $t^\prime$ in one, $d\omega^\prime$ in the
+next, and the outer loop integral over $d\omega$,
+\sm{}
+The integral over $dt^\prime$ may be evaluated,
+\sm{}
+which allows the integral over $\omega^\prime$ to be evaluated,
+\sm{}
+which results in
+\[C_{xx}(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}d\omega e^{i\omega t}\langle|\tilde{x}(\omega)|^2\rangle\label{cxxasx}\]
+i.e., the autocorrelation function of $x(t)$ is equal to the inverse Fourier transform of the power spectral density.
+Because of the wonderful features of our Fourier transform, we can also write it in reverse, the power
+spectral density is the Fourier transform of the autocorrelation function.
+\sm{.}
+
+Now, returning to our story, we have now shown in general (for linear systems under causality) that the correlation
+function $C_{xx}(t)$, which measures fluctuations of an undriven system around equilibrium, is equal to the
+Fourier transform of the power spectral density.  But if we think back to worksheet 4 and our damped, driven harmonic
+oscillator, there in Eq.~40 we showed that the time-averaged power absorbed by the oscillator $\langle P\rangle$
+was proportional to $\chi^{\prime\prime}(\omega)$, the imaginary part of the susceptibility.  In general,
+it can be shown that for a thermodynamic system the exact relationship is that
+\[\langle |x(\omega)|^2\rangle = K_BT\tilde{\chi}^\prime(0)\]
+\[\langle |x(\omega)|^2\rangle = K_BT\int_{-\infty}^{\infty}\frac{d\omega^\prime}{\pi}\frac{\tilde{\chi}^{\prime\prime}(\omega^\prime)}{\omega^\prime}\].
+Putting this back together with Eq.~\ref{cxxasx} we get
+\[\tilde{C}_{xx}(\omega)=2K_BT\frac{\tilde{\chi}^{\prime\prime}(\omega)}{\omega}\]
+This is a result of the fluctuation dissipation theorem. [what is important for us about the fluctuation dissipation theorem]
+
+%\section*{fluctuation dissipation theorem}
+%\section{langevin equation and brownian motion}
+\end{document}
+
+\worksheet{Scattering and fluctuations}
+\section*{mathematics of scattering}(Sivia)
+young's two slit problem?
+small angle scattering?
