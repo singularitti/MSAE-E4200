@@ -11,13 +11,13 @@
 \begin{document}
 
 \title{Physics of Crystalline Materials\\
-MSAE 4200\\
-Worksheet: Linear Response Theory I}
+  MSAE 4200\\
+  Worksheet: Linear Response Theory I}
 
 \maketitle
 
 \vskip 24pt
-{Names and Roles of team members:}
+  {Names and Roles of team members:}
 
 \vskip 24 pt
 Goal: The goals of this spreadsheet are:
@@ -32,7 +32,9 @@ Goal: The goals of this spreadsheet are:
 
 
 %\vskip 12pt
-Start this worksheet in class in your groups and discuss it.  There will also be some class discussion to get things off to a good start.  This worksheet will be finished in groups for homework.
+Start this worksheet in class in your groups and discuss it.  There will also be some class
+discussion to get things off to a good start.  This worksheet will be finished in groups for
+homework.
 
 %\section*{What is this worksheet about?}
 \section*{OK, here we go:}
@@ -55,19 +57,19 @@ Let's revisit the differential equation that we have been solving,
 \[m\frac{d^2x}{dt^2}+\gamma m \frac{dx}{dt} + m\omega_0^2 x = F(t).\label{diff}\]
 What happens if we replace $x$ with another number, $x+y$?
 \st{
-\begin{equation}
-m \frac{ d^2 }{ dt^2 }(x + y) + \gamma m \frac{ d }{ dt } (x + y) + m \omega_0^2 (x + y) = F(t).
-\end{equation}
+  \begin{equation}
+    m \frac{ d^2 }{ dt^2 }(x + y) + \gamma m \frac{ d }{ dt } (x + y) + m \omega_0^2 (x + y) = F(t).
+  \end{equation}
 }
 Then regroup the terms into those with $x$ and those with $y$.  We get
 \st{
-\begin{equation}
-\begin{split}
-m\frac{d^2x}{dt^2}+\gamma m \frac{dx}{dt} + m\omega_0^2 x &= F_0(t), \\
-m\frac{d^2 y}{dt^2}+\gamma m \frac{d y}{dt} + m\omega_0^2 y &= F_1(t), \\
-F_0(t) + F_1 (t) &= F(t).
-\end{split}
-\end{equation}
+  \begin{equation}
+    \begin{split}
+      m\frac{d^2x}{dt^2}+\gamma m \frac{dx}{dt} + m\omega_0^2 x &= F_0(t), \\
+      m\frac{d^2 y}{dt^2}+\gamma m \frac{d y}{dt} + m\omega_0^2 y &= F_1(t), \\
+      F_0(t) + F_1 (t) &= F(t).
+    \end{split}
+  \end{equation}
 }
 
 \section*{Linear Operators}
@@ -77,9 +79,9 @@ add a variable to, like $x$, and it will operate on the variable and produce som
 outcome.  So $\underline{L}(x)$ means apply our operation to the variable $x$.  Our
 operator, $\underline{L}$ would the be written as
 \st{
-\begin{equation}
-\underline{L} = m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2.
-\end{equation}
+  \begin{equation}
+    \underline{L} = m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2.
+  \end{equation}
 }
 We can then think about our operator as we would think about a function and do some
 algebra with it. For example, above we showed that by operating on $x+y$ we ended
@@ -87,16 +89,16 @@ up with two of the same operations separately on $x$ and on $y$,
 \sm{\underline{L}(x+y) = \underline{L}(x)+\underline{L}(y).\label{Lx+y}}
 Let's try another thing.  Replace $x$ in the differential equation with $ax$ and we get
 \st{
-\begin{equation}
-a m \frac{ d^2 }{ dt^2 } x + a \gamma m \frac{ d }{ dt } x + a m \omega_0^2 x = F(t).
-\end{equation}
+  \begin{equation}
+    a m \frac{ d^2 }{ dt^2 } x + a \gamma m \frac{ d }{ dt } x + a m \omega_0^2 x = F(t).
+  \end{equation}
 }
 which, if we write it in our operator notation we get
 \sm{\underline{L}(ax)=a\underline{L}(x).\label{Lax}}
 \st{
-Well, note here that $x$ and $y$ should refer to $2$ functions, like $f$ and $g$,
-rather than $2$ variables.\footnote{You can refer to \url{https://goo.gl/YcwWrj} section $2$
-for more detail.}
+  Well, note here that $x$ and $y$ should refer to $2$ functions, like $f$ and $g$,
+  rather than $2$ variables.\footnote{You can refer to \url{https://goo.gl/YcwWrj} section $2$
+    for more detail.}
 }
 
 Actually these two properties are really the same property since, for example, we could
@@ -107,266 +109,326 @@ a {\it linear operator}, and just based on its linearity, we can derive some use
 Now, remember that we made a big deal about the response being linear, so that $F=-kx$ was linear
 in $x$.  Below we check if our linear operator is still linear if we operate on a variable that is not linear, like $x^2$?,
 \st{
-\begin{equation}
-\bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg) 
-\big( f(x) + g(x) \big)
-= \bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg) f(x) 
-+ \bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg) g(x),
-\end{equation}
-where $f(x)$ and $g(x)$ could be $x^3$ and $x^2$, for example.
-The operator $\underline{L}$ is still linear even if it operates on a nonlinear function,
-which is, to our expect.
-\sout{It is not because Equations~\ref{Lx+y} and~\ref{Lax} don't hold.  So we really care if our whole problem is a {\it linear
-    problem}, i.e., the operator is linear and the response is linear, but if it is, as mentioned above, there are some
-  very general results that we can always use that we will explore below.}
+  \begin{equation}
+    \bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg)
+    \big( f(x) + g(x) \big)
+    = \bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg) f(x) 
+    + \bigg( m\frac{ d^2 }{ dt^2 } + \gamma m \frac{ d }{ dt } + m \omega_0^2 \bigg) g(x),
+  \end{equation}
+  where $f(x)$ and $g(x)$ could be $x^3$ and $x^2$, for example.
+  The operator $\underline{L}$ is still linear even if it operates on a nonlinear function,
+  which is, to our expect.
+  \sout{It is not because Equations~\ref{Lx+y} and~\ref{Lax} don't hold.  So we really care if our whole problem is a {\it linear
+        problem}, i.e., the operator is linear and the response is linear, but if it is, as mentioned above, there are some
+    very general results that we can always use that we will explore below.}
 }
 
 
 
-First consider the case where there is no Force acting, so our differential equation for the oscillator, Eq.~\ref{diff}, written in operator format,
-is
+First consider the case where there is no Force acting, so our differential equation for the
+oscillator, Eq.~\ref{diff}, written in operator format, is
 \sm{\underline{L}(x)=0.}
-This will result in the transient solution which may be an underdamped or overdamped oscillation that we found before.  As we found,
-there are particular values for $x(t)$ that are solutions.  Let's say that one of these solutions that we find is $x_1(t)$.  Because our
-problem is linear, it means that there are an infinite number of other solutions that we have found, because if we multiply $x_1$ by
+This will result in the transient solution which may be an underdamped or overdamped
+oscillation that we found before.  As we found, there are particular values for $x(t)$ that
+are solutions.  Let's say that one of these solutions that we find is $x_1(t)$.  Because our
+problem is linear, it means that there are an infinite number of other solutions that we
+have found, because if we multiply $x_1$ by
 $a$ we get
 \st{
-\begin{equation}
-a x_1(t)
-\end{equation}
+  \begin{equation}
+    a x_1(t)
+  \end{equation}
 }
 which since
 \st{
   \begin{equation}
-  \underline{L}(ax_1) = a \underline{L}(x_1) = a \cdot 0 = 0
+    \underline{L}(ax_1) = a \underline{L}(x_1) = a \cdot 0 = 0
   \end{equation}
 }
 is also a solution.  Then let's say that by being so clever and working in teams we managed to actually find two distinct solutions,
 $x_1$ and $x_2$.  Applying the linearity relations to this situation,
 \st{
   \begin{equation}
-  \underline{L}(x_1+x_2) = \underline{L}(x_1) + \underline{L}(x_2) = 0 + 0 = 0
+    \underline{L}(x_1+x_2) = \underline{L}(x_1) + \underline{L}(x_2) = 0 + 0 = 0
   \end{equation}
 }
-we can find that $x_1+x_2$ is also a solution. combining these two things, we see that any combination of $\alpha x_1 + \beta x_2$ will
-also be a solution.  We will explore the importance of this shortly, but it means that there are an infinite number of solutions to the
-problem, but most of these solutions are kind of trivial, it is the same solution only scaled to make it bigger or smaller.   This is distinct
-from the much harder work that went into finding the two special solutions, $x_1$ and $x_2$, but once we have them, we can trivially find
-more solutions by making linear combinations of them.  So we give our special solutions ($x_1$ and $x_2$ in this case) a special name,
-and call them ``independent solutions".
-More strictly defined, solutions are independent if they cannot be made by some linear combination of the other solutions.  The number of
-independent solutions to a problem is not infinite, in fact it depends on the number of ``degrees of freedom" in the problem.  In our case,
-the second order differential equation has two degrees of freedom and there are just two independent solutions.  This is helpful to know because
-once we have found two independent solutions in this case we know we can take a break, we have found all those we can find.
+we can find that $x_1+x_2$ is also a solution. combining these two things, we see that any
+combination of $\alpha x_1 + \beta x_2$ will also be a solution.  We will explore the
+importance of this shortly, but it means that there are an infinite number of solutions to
+the problem, but most of these solutions are kind of trivial, it is the same solution only
+scaled to make it bigger or smaller.   This is distinct from the much harder work that went
+into finding the two special solutions, $x_1$ and $x_2$, but once we have them, we can
+trivially find more solutions by making linear combinations of them.  So we give our special
+solutions ($x_1$ and $x_2$ in this case) a special name, and call them ``independent
+solutions". More strictly defined, solutions are independent if they cannot be made by some
+linear combination of the other solutions.  The number of independent solutions to a problem
+is not infinite, in fact it depends on the number of ``degrees of freedom" in the problem.
+In our case, the second order differential equation has two degrees of freedom and there are
+just two independent solutions.  This is helpful to know because once we have found two
+independent solutions in this case we know we can take a break, we have found all those we
+can find.
 
 OK, now let's get back to the case where we had a force, so we are trying to solve not the differential equation where it equaled zero, $\underline{L}(x)=0$
 but the one
 \st{
   \begin{equation}
-  \underline{L}(x) = F(t)
+    \underline{L}(x) = F(t)
   \end{equation}
 }
 And let's say we cleverly found a special solution to this, which was say, $x_F(t)$.  Now let's add one of our solutions to the free equation (no force),
 above, for example, $x_1$.  Plug this new solution into our differential operator equation,
 \st{
   \begin{equation}
-  \underline{L}(x_F(t)) = F(t)
+    \underline{L}(x_F(t)) = F(t)
   \end{equation}
 }
 and apply the linearity property
 \st{
   \begin{equation}\label{eq:lp}
-  \underline{L}(x_1 + x_F(t)) = \underline{L}(x_1) + \underline{L}(x_F(t)) = F(t)
+    \underline{L}(x_1 + x_F(t)) = \underline{L}(x_1) + \underline{L}(x_F(t)) = F(t)
   \end{equation}
 }
-and we see that $x_F+x_1$ is also a solution, as would any of the solutions that we can get by making linear combinations of our two independent solutions.
+and we see that $x_F+x_1$ is also a solution, as would any of the solutions that we can get
+by making linear combinations of our two independent solutions.
 
-This is pretty cool (and pretty scary).  Let's think a little bit what it means.  The solutions that we found when $F=0$ are free solutions, which are solutions
-that you would get if you initiated motion of the damped HO, for example, by grabbing the mass, displacing it, and then letting it go.  These are transient
-solutions which will decay in time.  So what Eq.~\eqref{eq:lp} is telling us is that we can add any transient solution to our particular forced solution
-and we will get another valid solution.
+This is pretty cool (and pretty scary).  Let's think a little bit what it means.  The
+solutions that we found when $F=0$ are free solutions, which are solutions that you would
+get if you initiated motion of the damped HO, for example, by grabbing the mass, displacing
+it, and then letting it go.  These are transient solutions which will decay in time.  So
+what Eq.~\eqref{eq:lp} is telling us is that we can add any transient solution to our
+particular forced solution and we will get another valid solution.
 
-[this was a lot of math.  Now we want to relate it back to physics and the real world.  Some real situation.  If there are an infinite number of solutions
-to the differential equation, does that mean that there is an infinite number of ways that an oscillator will execute motion if we set it going?  What is
-going on? Newton's laws are supposed to be deterministic...once you write them down and solve them, the motion of the objects is completely determined, not have an infinite number of possibilities. Please discuss this.]
+  [this was a lot of math.  Now we want to relate it back to physics and the real world.
+    Some real situation.  If there are an infinite number of solutions to the differential
+    equation, does that mean that there is an infinite number of ways that an oscillator
+    will execute motion if we set it going?  What is going on? Newton's laws are supposed to
+    be deterministic...once you write them down and solve them, the motion of the objects is
+    completely determined, not have an infinite number of possibilities. Please discuss
+    this.]
 \st{
   There are infinite number of possible solutions mathematically. For example,  there are infinite number of values that the prefactor $A$ can take in the solution of ODE. However, physically the initially condition constrains the value of the amplitude, the expression for the system is determined by the initial condition. There are only finite number of solutions.
 }
 
 [Can you plot the motion of a particular oscillator using Python or Matlab where you turn
-the oscillating force on at some point of time and see what happens to the motion (it
-often looks better if $\omega$ is quite different from $\omega_0$, like 5 times smaller or something)?]
+  the oscillating force on at some point of time and see what happens to the motion (it
+  often looks better if $\omega$ is quite different from $\omega_0$, like 5 times smaller or something)?]
 
 
 
 \section*{Superposition}
 
-Now, let's say that we want to solve a problem that is much harder.  We drive our oscillator with some force, $F_1(t)$ and the optimist was clever enough to find
-a solution for the motion $x_{F_1}(t)$.  And the leader took the lead by finding a solution when the same oscillator was driven with a different force, $F_2$.
-As usual, the skeptic was grumpy and skeptical and making trouble, and said, ``This whole thing is useless, because we can only solve problems where
-we have artificial situations
-such as perfectly sinusoidal forces.  It is not very practical I am afraid. For example, what if we drive the oscillator with both forces at the same time.  We will
-never be able to solve such a complicated situation as that?".
+Now, let's say that we want to solve a problem that is much harder.  We drive our oscillator
+with some force, $F_1(t)$ and the optimist was clever enough to find a solution for the
+motion $x_{F_1}(t)$.  And the leader took the lead by finding a solution when the same
+oscillator was driven with a different force, $F_2$. As usual, the skeptic was grumpy and
+skeptical and making trouble, and said, ``This whole thing is useless, because we can only
+solve problems where we have artificial situations such as perfectly sinusoidal forces.  It
+is not very practical I am afraid. For example, what if we drive the oscillator with both
+forces at the same time.  We will never be able to solve such a complicated situation as
+that?".
 
 [what might the response of the optimist (or anyone else in the team for that matter) be here?]
 \st{
   \begin{equation*}
-  L[x_{F_1}(t)+x_{F_2}(t)] = L[x_{F_1}(t)] + L[x_{F_2}(t)] = F_1(t) + F_2(t)
+    L[x_{F_1}(t)+x_{F_2}(t)] = L[x_{F_1}(t)] + L[x_{F_2}(t)] = F_1(t) + F_2(t)
   \end{equation*}
 }
-This means that if I can find a way to generate any arbitrary time-dependent force, $F(t)$, as a sum of other simpler forces that I can use to find solutions
-to my linear operator equation (which is really a second order differential equation remember), then I am good.  Actually, right now we only know one way
-to solve that problem, which is to have a force that is sinusoidal, $F(t) = F_0\cos(\omega t +\phi)$, so ideally I would be able to make my force $F(t)$ as
-a sum of sinusoidal forces.
+This means that if I can find a way to generate any arbitrary time-dependent force, $F(t)$,
+as a sum of other simpler forces that I can use to find solutions to my linear operator
+equation (which is really a second order differential equation remember), then I am good.
+Actually, right now we only know one way to solve that problem, which is to have a force
+that is sinusoidal, $F(t) = F_0\cos(\omega t +\phi)$, so ideally I would be able to make my
+force $F(t)$ as a sum of sinusoidal forces.
 
 \section*{Fourier series}
 
-But wait, this is exactly what we learned about in math class.  Any periodic function can be represented by a sum of sinusoidal terms, $a_i\cos(\omega_i t)+ b_i\sin(\omega_i t)$ (which in turn could be
-represented in complex form as a sum of complex exponentials, $\hat{a}_ie^{i\omega_i t}$, i.e.,
+But wait, this is exactly what we learned about in math class.  Any periodic function can be
+represented by a sum of sinusoidal terms, $a_i\cos(\omega_i t)+ b_i\sin(\omega_i t)$ (which
+in turn could be represented in complex form as a sum of complex exponentials,
+$\hat{a}_ie^{i\omega_i t}$, i.e.,
 \st{
   \begin{equation}
-  f(x) = \sum\limits_{i=0}^{\infty} a_i\cos(\omega_i t)+ b_i\sin(\omega_i t) = \sum\limits_{i=0}^{\infty} \hat{a}_ie^{i\omega_i t}
+    f(x) = \sum\limits_{i=0}^{\infty} a_i\cos(\omega_i t)+ b_i\sin(\omega_i t) = \sum\limits_{i=0}^{\infty} \hat{a}_ie^{i\omega_i t}
   \end{equation}
 }
-by suitably picking the frequency terms with non-zero coefficients (i.e., which frequency terms are present and which are not in the series) and by
-suitably determining the coefficients of each frequency term.
+by suitably picking the frequency terms with non-zero coefficients (i.e., which frequency
+terms are present and which are not in the series) and by suitably determining the
+coefficients of each frequency term.
 
-[for example, what is the Fourier series for a square wave?]  
+  [for example, what is the Fourier series for a square wave?]
 \st{
   \begin{equation*}
-  f(x) = \frac{4}{\pi} \sum\limits_{n=1,3,5...}^{\infty} \frac{1}{n} \sin(\frac{n\pi x}{L})
+    f(x) = \frac{4}{\pi} \sum\limits_{n=1,3,5...}^{\infty} \frac{1}{n} \sin(\frac{n\pi x}{L})
   \end{equation*}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{sqw.png}
-  \caption{Fourier series of a square wave}
-  \label{fig:sqw}
-\end{figure}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{sqw.png}
+    \caption{Fourier series of a square wave}
+    \label{fig:sqw}
+  \end{figure}
 }
 
 [What is the Fourier series for a sawtooth wave?]
 \st{
   \begin{equation*}
-  f(x) = \frac{1}{2} - \frac{1}{\pi} \sum\limits_{n=1}^{\infty} \frac{1}{n} \sin(\frac{n\pi x}{L})
+    f(x) = \frac{1}{2} - \frac{1}{\pi} \sum\limits_{n=1}^{\infty} \frac{1}{n} \sin(\frac{n\pi x}{L})
   \end{equation*}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{saw.png}
-  \caption{Fourier series of a sawtooth wave}
-  \label{fig:saw}
-\end{figure}
-
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{saw.png}
+    \caption{Fourier series of a sawtooth wave}
+    \label{fig:saw}
+  \end{figure}
+  
 }
 
-In general, it may require an infinite number of terms in the series to properly define any given function, for example, if we want the square wave or sawtooth peaks
-to have straight and vertical (i.e., infinitely sharp) edges.  However, we can get an approximate form of the force by truncating the series
-when we get too tired but have a sufficiently good description of our force.
+In general, it may require an infinite number of terms in the series to properly define any
+given function, for example, if we want the square wave or sawtooth peaks to have straight
+and vertical (i.e., infinitely sharp) edges.  However, we can get an approximate form of the
+force by truncating the series when we get too tired but have a sufficiently good
+description of our force.
 
-[In general terms, describe how you would find the motion of your oscillator if it was being driven by a square-wave]
+  [In general terms, describe how you would find the motion of your oscillator if it was being driven by a square-wave]
 \st{
-  
+
   If the system is driven by a square-wave force, we can take the Fourier series of the square-wave force, which can be decomposed into infinite number of sinusoidal terms. Solve for each system driven by these decomposed sinusoidal force and use the principle of superposition to obtain the general solution for the original problem.
 }
 
 \section*{Fourier transforms}
 
-But what if my force is not oscillatory (i.e., repeating regularly in time forever)?  Fourier helps us in that case too.  We just switch from the Fourier
-series to the Fourier transform.  It is still a ``sum" over sinusoidal solutions (or equivalently in the complex representation) but we have to now allow
-for not only an infinite number of terms in the series, but also an infinite resolution on the variation of the frequencies.  In other words, the
-allowed frequencies now becomes a continuous variable that can take any value from $-\infty$ to $\infty$.
+But what if my force is not oscillatory (i.e., repeating regularly in time forever)?
+Fourier helps us in that case too.  We just switch from the Fourier series to the Fourier
+transform.  It is still a ``sum" over sinusoidal solutions (or equivalently in the complex
+representation) but we have to now allow for not only an infinite number of terms in the
+series, but also an infinite resolution on the variation of the frequencies.  In other
+words, the allowed frequencies now becomes a continuous variable that can take any value
+from $-\infty$ to $\infty$.
 
 The Fourier transform $\tilde{f}(\omega)$ of a function, $f(t)$ is written as
 \st{
   \begin{equation}
-  \widetilde{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
+    \widetilde{f}(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
   \end{equation}
 }
 and the inverse transform that gives  $f(t)$ in terms of  $\tilde{f}(\omega)$ is
 \st{
   \begin{equation}
-  f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \widetilde{f}(\omega) e^{i\omega t} d\omega
+    f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} \widetilde{f}(\omega) e^{i\omega t} d\omega
   \end{equation}
 }
-There is some ambiguity in the prefactor.  Sometimes the prefactor for the direct transform is given as unity (1), then for the inverse transform
-to come out right we have to multiply the integral by $\frac{1}{2\pi}$.  But some people, like our skeptic, don't like that because they argue,
-quite reasonably, that philosophically there is not really any distinction between a forward transform and an inverse transform.  If something
-is a Fourier transform of something else, then we could equally well turn it around and say that the something else is the Fourier transform of
-the first thing.  In other words, the direct and inverse Fourier transforms should be symmetric and look the same.  In this case, they are written as
+There is some ambiguity in the prefactor.  Sometimes the prefactor for the direct transform
+is given as unity (1), then for the inverse transform to come out right we have to multiply
+the integral by $\frac{1}{2\pi}$.  But some people, like our skeptic, don't like that
+because they argue, quite reasonably, that philosophically there is not really any
+distinction between a forward transform and an inverse transform.  If something is a Fourier
+transform of something else, then we could equally well turn it around and say that the
+something else is the Fourier transform of the first thing.  In other words, the direct and
+inverse Fourier transforms should be symmetric and look the same.  In this case, they are
+written as
 \st{
   \begin{equation}
-  \widetilde{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
+    \widetilde{f}(\omega) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
   \end{equation}
 }
 and
 \st{
   \begin{equation}
-  f(t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \widetilde{f}(\omega) e^{i\omega t} d\omega
+    f(t) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \widetilde{f}(\omega) e^{i\omega t} d\omega
   \end{equation}
 }
 both with the same prefactor.
 
-The miracle that just happened here is that we figured out how to represent {\it any} time-dependent force in terms of sums (or more generally integrals) of
-sinusoidal solutions.  And we also showed that the linearity of our problem allows us to use superposition to find a solution in general by adding
-together (with proper coefficients) sinusoidal solutions, and finally, we find the sinusoidal solutions to our Newton's law linear operator equation almost
-in our sleep it is so easy.  So as long as our system is linear (behaves, at least approximately, like a harmonic oscillator) we can solve it!  It may
-take quite a lot of computing because there may be lots and lots of terms that we need to find their coefficients and sum together, but with a big enough
-computer, we can do it!
+The miracle that just happened here is that we figured out how to represent {\it any}
+time-dependent force in terms of sums (or more generally integrals) of sinusoidal solutions.
+And we also showed that the linearity of our problem allows us to use superposition to find
+a solution in general by adding together (with proper coefficients) sinusoidal solutions,
+and finally, we find the sinusoidal solutions to our Newton's law linear operator equation
+almost in our sleep it is so easy.  So as long as our system is linear (behaves, at least
+approximately, like a harmonic oscillator) we can solve it!  It may take quite a lot of
+computing because there may be lots and lots of terms that we need to find their
+coefficients and sum together, but with a big enough computer, we can do it!
 
 \section*{Summary}
 
-Remember all the way back to the beginning of class.  We wanted to probe the {\it properties} of materials.  What does that mean? Something like,
-is the material transparent or opaque?  Is the material a metal or an insulator?  Is the material a good heat conductor or a bad heat conductor?
-Things like that.  The way we do probe these properties is that we apply some kind of force or perturation to the material, then we measure some response.
-For example, for transparency, we could shine light on the material and we measure the transmission of light through the material.  For electrical conductivity
-we could apply a voltage to the material and measure the resulting current.  For the thermal conductivity, we might to apply a temperature gradient
-to the material by making one side of the material hotter than the other and measure the heat flow through the material.  To put a number on the property
-(i.e., to be quantitative, which is always a goal in science) we define a susceptibility.  A high susceptibility means that there is a rather big response to a
-rather small force, and a small susceptibility means there is a rather small response to a rather big force.  Sometimes we want materials with big susceptibilities
-(magnetic disc drives) and sometimes we want materials with small susceptibilities (transparent glass, thermal insulation on buildings).  In general we call
-the susceptibility by the Greek letter $\chi$.
-To keep things simple
-to begin with, and because many systems actually do behave this way, at least for small enough forces, we consider a linear response.  In other words, the
-size of the response is proportional to the size of the force.  Then the susceptibility is the constant of proportionality, and we can find it by taking the
-ratio of the measured response divided by the applied force.
+Remember all the way back to the beginning of class.  We wanted to probe the {\it
+    properties} of materials.  What does that mean? Something like, is the material transparent
+or opaque?  Is the material a metal or an insulator?  Is the material a good heat conductor
+or a bad heat conductor? Things like that.  The way we do probe these properties is that we
+apply some kind of force or perturation to the material, then we measure some response. For
+example, for transparency, we could shine light on the material and we measure the
+transmission of light through the material.  For electrical conductivity we could apply a
+voltage to the material and measure the resulting current.  For the thermal conductivity, we
+might to apply a temperature gradient to the material by making one side of the material
+hotter than the other and measure the heat flow through the material.  To put a number on
+the property (i.e., to be quantitative, which is always a goal in science) we define a
+susceptibility.  A high susceptibility means that there is a rather big response to a rather
+small force, and a small susceptibility means there is a rather small response to a rather
+big force.  Sometimes we want materials with big susceptibilities (magnetic disc drives) and
+sometimes we want materials with small susceptibilities (transparent glass, thermal
+insulation on buildings).  In general we call the susceptibility by the Greek letter $\chi$.
+To keep things simple to begin with, and because many systems actually do behave this way,
+at least for small enough forces, we consider a linear response.  In other words, the size
+of the response is proportional to the size of the force.  Then the susceptibility is the
+constant of proportionality, and we can find it by taking the ratio of the measured response
+divided by the applied force.
 
-Everything we have talked about up to now in this summary is measurement.  We have been making measurements on materials, which is fine.  If we were just
-engineers and all we wanted to do was make things, we could just measure everything and make lots and lots of books of tables where we write down the
-numbers that we measured.  And if someone wants to make something with a material and they need a particular property they could look up in the tables and
-try and find a material that has a susceptibility that is just right for their purpose, and try it out in their application.  But we want to go one step
-further.  We want to be materials scientists or materials physicists, and science implies seeking some kind of understanding about what is going on.
-Explaining why the universe is the way it is, or at least gaining some insight into how the universe behaves in some general way.  So what we do is
-we come up with a model, which is as simple as it can possibly be (but not too simple) to capture the observed behavior.  Then we play around with this
-model to try and get some insight into our magical universe.  So let's try the model of a simple oscillator, like a mass on a spring and analyze it and see
-what kinds of insights we can get.
+Everything we have talked about up to now in this summary is measurement.  We have been
+making measurements on materials, which is fine.  If we were just engineers and all we
+wanted to do was make things, we could just measure everything and make lots and lots of
+books of tables where we write down the numbers that we measured.  And if someone wants to
+make something with a material and they need a particular property they could look up in the
+tables and try and find a material that has a susceptibility that is just right for their
+purpose, and try it out in their application.  But we want to go one step further.  We want
+to be materials scientists or materials physicists, and science implies seeking some kind of
+understanding about what is going on. Explaining why the universe is the way it is, or at
+least gaining some insight into how the universe behaves in some general way.  So what we do
+is we come up with a model, which is as simple as it can possibly be (but not too simple) to
+capture the observed behavior.  Then we play around with this model to try and get some
+insight into our magical universe.  So let's try the model of a simple oscillator, like a
+mass on a spring and analyze it and see what kinds of insights we can get.
 
-Now, getting back to our measurements of susceptibilities.  Sometimes we will apply a constant (time invariant) force and get a constant response.
-Then we get the response of our material to a static force which is
-the zero frequency, or static, susceptibility.  In the case of when our system was a mass on a spring it was just
-the $1/k$, the inverse of the spring constant!  The susceptibility of the spring is just related to the stiffness of the spring.
-It makes sense.  A stiff spring will give a small
-displacement (response) to a large force and therefore has a small susceptibility, and vice versa.
+Now, getting back to our measurements of susceptibilities.  Sometimes we will apply a
+constant (time invariant) force and get a constant response. Then we get the response of our
+material to a static force which is the zero frequency, or static, susceptibility.  In the
+case of when our system was a mass on a spring it was just the $1/k$, the inverse of the
+spring constant!  The susceptibility of the spring is just related to the stiffness of the
+spring. It makes sense.  A stiff spring will give a small displacement (response) to a large
+force and therefore has a small susceptibility, and vice versa.
 
-However, we gained more insight.  What we found by studying the HO system, is that things can get a bit more complicated when the force starts to be
-time-varying, for example, a periodically varying force.  In this case, the response of the system to the same strength (amplitude, $F_0$) of force
-actually depends on the frequency of the applied force (even in the absence of damping).  It means that our spring system (and if it is an ok model for
-some aspects of materials, also those aspects of materials) has many different susceptibilities depending on the frequency of the driving force,
-so we have to express $\chi$ as a function of frequency $\chi(\omega)$ because the response (displacement amplitude) of the spring is different
-for the same amplitude force when that force is applied at a different frequency, so in other words, the susceptibility of our system depends on
-the frequency!  This means, if we are engineers, we now have to make way more tables and more books of tables, because we have to measure the response
-of every material to a force at every different frequency, and record all those different susceptibilities in those tables, and then when we want
-to make a device like a cell phone, we have to figure out what frequency of force the material will be subjected to and pick a material that has just
-the right susceptibility response at just the frequency where we want it to operate!
+However, we gained more insight.  What we found by studying the HO system, is that things
+can get a bit more complicated when the force starts to be time-varying, for example, a
+periodically varying force.  In this case, the response of the system to the same strength
+(amplitude, $F_0$) of force actually depends on the frequency of the applied force (even in
+the absence of damping).  It means that our spring system (and if it is an ok model for some
+aspects of materials, also those aspects of materials) has many different susceptibilities
+depending on the frequency of the driving force, so we have to express $\chi$ as a function
+of frequency $\chi(\omega)$ because the response (displacement amplitude) of the spring is
+different for the same amplitude force when that force is applied at a different frequency,
+so in other words, the susceptibility of our system depends on the frequency!  This means,
+if we are engineers, we now have to make way more tables and more books of tables, because
+we have to measure the response of every material to a force at every different frequency,
+and record all those different susceptibilities in those tables, and then when we want to
+make a device like a cell phone, we have to figure out what frequency of force the material
+will be subjected to and pick a material that has just the right susceptibility response at
+just the frequency where we want it to operate!
 
-Actually, the physics can help the engineers a bit, because we also figured out how to solve our toy model in a very general way, not just for perfectly
-sinusoidal forces (which is still pretty powerful because shining monochromatic light on something is actually forcing it with a sinusoidal force) but
-for any general time-dependent force, which means that we can take some measurement, where some time-dependent force is applied to a material, and
-if that material is responding like our toy model, in other words, if something inside the material is behaving like a simple oscillator (even if it is a
-damped oscillator because we solved that case too) then we can model it and extract an $\omega$ dependent susceptibility from the time dependent
-measured response to that time-dependent force.  At least in principle we can do that, but the math may turn out to be hard (and material property may not
-be well modeled as a simple oscillator!).  Still, that is pretty cool progress.  And we did at least find one real material response, the optical frequency
-dielectric susceptibility of a semiconductor, and of a gas made of mixtures of molecules (i.e., the atmosphere), that did on the face of it seem to look like
-the response we would expect from a system of simple oscillators.
+Actually, the physics can help the engineers a bit, because we also figured out how to solve
+our toy model in a very general way, not just for perfectly sinusoidal forces (which is
+still pretty powerful because shining monochromatic light on something is actually forcing
+it with a sinusoidal force) but for any general time-dependent force, which means that we
+can take some measurement, where some time-dependent force is applied to a material, and if
+that material is responding like our toy model, in other words, if something inside the
+material is behaving like a simple oscillator (even if it is a damped oscillator because we
+solved that case too) then we can model it and extract an $\omega$ dependent susceptibility
+from the time dependent measured response to that time-dependent force.  At least in
+principle we can do that, but the math may turn out to be hard (and material property may
+not be well modeled as a simple oscillator!).  Still, that is pretty cool progress.  And we
+did at least find one real material response, the optical frequency dielectric
+susceptibility of a semiconductor, and of a gas made of mixtures of molecules (i.e., the
+atmosphere), that did on the face of it seem to look like the response we would expect from
+a system of simple oscillators.
 
-It is hard work, but we can feel pretty good about ourselves!  We understood some of the secrets of the universe!
+It is hard work, but we can feel pretty good about ourselves!  We understood some of the
+secrets of the universe!
 
 \end{document}
