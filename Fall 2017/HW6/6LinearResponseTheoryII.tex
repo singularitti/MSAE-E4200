@@ -12,18 +12,18 @@
 \begin{document}
 
 \title{Physics of Crystalline Materials\\
-MSAE 4200\\
-Worksheet: Linear Response Theory II}
+      MSAE 4200\\
+      Worksheet: Linear Response Theory II}
 
 \maketitle
 
 \vskip 24pt
-{Names and Roles of team members:}
+      {Names and Roles of team members:}
 
 \vskip 24 pt
 Goal: The goals of this spreadsheet are:
 \begin{itemize}
-\item To expand linear response theory beyond the simple harmonic oscillator and derive some more general results.
+      \item To expand linear response theory beyond the simple harmonic oscillator and derive some more general results.
 \end{itemize}
 
 \cork{}
@@ -38,12 +38,12 @@ Start this worksheet in class in your groups and discuss it.  There will also be
 \section*{OK, here we go:}
 Usual preamble:
 \begin{enumerate}
-  \item Figure out your group
-  \item Figure out who is team leader
-  \item Introduce yourselves to each other
-  \item Figure out who is scribe for this worksheet
-  \item Discuss and write down the team goal
-  \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.
+      \item Figure out your group
+      \item Figure out who is team leader
+      \item Introduce yourselves to each other
+      \item Figure out who is scribe for this worksheet
+      \item Discuss and write down the team goal
+      \item We will work on this worksheet in groups in class but you will finish up by yourself for homework.
 \end{enumerate}
 
 This is mostly a
@@ -99,29 +99,29 @@ of the non-Fourier transformed function.  In this case it must have dimensions o
 has a $2\pi$ out front making it an angular frequency.
 \bi
 \item The Fourier transform is linear, so
-      \sm{\tilde{\{x+y\}}(\omega)= \tilde{x}(\omega)+\tilde{y}(\omega)}
-      and
-      \sm{\tilde{ax}(t) = a\tilde{x}(t)}
-      where $a$ is a constant.
+\sm{\tilde{\{x+y\}}(\omega)= \tilde{x}(\omega)+\tilde{y}(\omega)}
+and
+\sm{\tilde{ax}(t) = a\tilde{x}(t)}
+where $a$ is a constant.
 \item The Fourier transform of the delta function $\delta (t-t^\prime)$ is given by
-      \sm{\int_{-\infty}^\infty e^{-i\omega t}\delta(t-t^\prime)dt = e^{-i\omega t^\prime}}
+\sm{\int_{-\infty}^\infty e^{-i\omega t}\delta(t-t^\prime)dt = e^{-i\omega t^\prime}}
 \item The inverse transform is then of course \sm{\frac{1}{2\pi}\int_{-\infty}^\infty e^{i\omega (t-t^\prime)}d\omega = \delta(t-t^\prime)}
-      This is pretty cool, because now we know how to evaluate an integral of a complex exponential.
+This is pretty cool, because now we know how to evaluate an integral of a complex exponential.
 \item For example, this allows us to solve the integral of a complex function of the form $\int_{-\infty}^\infty e^{i(\omega-\omega^\prime)t} dt$,
-    which is the inverse Fourier transform of $e^{-i\omega^\prime t}$
-      \sm{\frac{1}{2\pi}\int_{-\infty}^\infty e^{i(\omega-\omega^\prime)t} dt  = \delta(\omega-\omega^\prime)}
+which is the inverse Fourier transform of $e^{-i\omega^\prime t}$
+\sm{\frac{1}{2\pi}\int_{-\infty}^\infty e^{i(\omega-\omega^\prime)t} dt  = \delta(\omega-\omega^\prime)}
 \item The Fourier transform of $x^*(t)$ is $\tilde{x}^*(-\omega)$
 \item There is another really cool result.  We can Fourier transform a function, $x(t)$ in general, but what do we get if we
-      try and Fourier transform the time-derivative of $x(t)$, $\dot{x}(t) = \frac{dx}{dt}$.  The result is
-      \sm{\tilde{\dot{x}}(\omega) = i\omega\tilde{x}(\omega).}
-      This is really cool because we can Fourier transform a differential equation into an algebraic equation, which could make it easier to solve!
+try and Fourier transform the time-derivative of $x(t)$, $\dot{x}(t) = \frac{dx}{dt}$.  The result is
+\sm{\tilde{\dot{x}}(\omega) = i\omega\tilde{x}(\omega).}
+This is really cool because we can Fourier transform a differential equation into an algebraic equation, which could make it easier to solve!
 \item Completing this thought, the Fourier transform of $\ddot{x}(t)$ is
-       \sm{\tilde{\ddot{x}}(\omega) = i\omega\tilde{\dot{x}}(\omega)= -\omega^2\tilde{{x}}(\omega)}
+\sm{\tilde{\ddot{x}}(\omega) = i\omega\tilde{\dot{x}}(\omega)= -\omega^2\tilde{{x}}(\omega)}
 \item The convolution $h(t)=f(t)\otimes g(t)$ of two functions $f(t)$ and $g(t)$ is written
-       \sm{h(t)=\int_{-\infty}^\infty dt^\prime f(t-t^\prime)g(t^\prime)\label{convolution} }
-       The convolution theorem states that the Fourier transform of $h(t)$, $\tilde{h}(\omega)$, is
-       \sm{\tilde{h}(\omega)=\tilde{f}(\omega)\tilde{g}(\omega)}
-       So a nasty integral was turned into a simple product.
+\sm{h(t)=\int_{-\infty}^\infty dt^\prime f(t-t^\prime)g(t^\prime)\label{convolution} }
+The convolution theorem states that the Fourier transform of $h(t)$, $\tilde{h}(\omega)$, is
+\sm{\tilde{h}(\omega)=\tilde{f}(\omega)\tilde{g}(\omega)}
+So a nasty integral was turned into a simple product.
 \ei
 \section*{Familiar territory}
 OK, let's return to our favorite driven damped HO.  We could solve it as a differential equation for special solutions. But let's try a different trick.
@@ -232,8 +232,8 @@ a convolution,
 
 The Heaviside step function is written as follows,
 \sm{\theta(t)=
-  \begin{cases}1&t>0\\0&t<0
-\end{cases}}
+      \begin{cases}1 & t>0 \\0&t<0
+      \end{cases}}
 
 and by a sweet piece of mathematical elegance, we can write 1 as $\lim_{\epsilon\rightarrow 0}\,e^{-\epsilon t}$, and so we change the
 definition of the Heaviside function to
@@ -274,8 +274,8 @@ The expression for $\tilde{\chi}^\prime(0)$,
 \sm{}
 is the real-part of the static susceptibility, which is an integration over all the dissipation of the system.
 
-[Show that the real and imaginary parts
-of the susceptibility for the HO oscillator satisfy the K-K relation above.
-Discuss the importance of this relationship and its generality (what assumptions went into the derivation).  ]
+      [Show that the real and imaginary parts
+            of the susceptibility for the HO oscillator satisfy the K-K relation above.
+            Discuss the importance of this relationship and its generality (what assumptions went into the derivation).  ]
 
 \end{document}
