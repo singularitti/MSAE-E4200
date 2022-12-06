@@ -6,4 +6,3 @@
 | $\sigma_1$ | $\sigma_1$ | $\sigma_2$ | $\sigma_3$ |    $E$     |   $C_3$    |  $C_3^2$   |
 | $\sigma_2$ | $\sigma_2$ | $\sigma_3$ | $\sigma_1$ |  $C_3^2$   |    $E$     |   $C_3$    |
 | $\sigma_3$ | $\sigma_3$ | $\sigma_1$ | $\sigma_2$ |   $C_3$    |  $C_3^2$   |    $E$     |
-
