@@ -3,8 +3,8 @@
 # created at 9 avr. 2017 17:49
 # created by Nil-Zil
 
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.linalg import eigvals
 
 gamma_1 = 1
