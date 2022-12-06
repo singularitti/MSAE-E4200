@@ -12,15 +12,15 @@
 
 \begin{tikzpicture}[remember picture, overlay]
 
-	\node at (current page.south west){
-		\begin{tikzpicture}[remember picture, overlay]
+    \node at (current page.south west){
+        \begin{tikzpicture}[remember picture, overlay]
 
-			\foreach \y in {1, 2.4,..., 43}
-			\draw[color=h, line width=1pt](0,\y) -- (20in, \y);
-			\draw[color=v, line width=2pt] (2in,0)--(2in,40in);
+            \foreach \y in {1, 2.4,..., 43}
+            \draw[color=h, line width=1pt](0,\y) -- (20in, \y);
+            \draw[color=v, line width=2pt] (2in,0)--(2in,40in);
 
-		\end{tikzpicture}
-	};
+        \end{tikzpicture}
+    };
 \end{tikzpicture}
 \pagecolor{bg}
 
